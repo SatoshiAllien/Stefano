@@ -1671,8 +1671,9 @@ p:last-child { margin-bottom: 0; }
 }
 
 .chatbot__header-info span {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: var(--color-gray-400);
+  letter-spacing: 0.02em;
 }
 
 .chatbot__close {
@@ -1708,6 +1709,14 @@ p:last-child { margin-bottom: 0; }
   background: var(--bg-surface);
   color: var(--text-primary);
   border-bottom-left-radius: 4px;
+  white-space: pre-wrap;
+}
+
+.chatbot__message--welcome {
+  background: linear-gradient(135deg, var(--bg-surface) 0%, rgba(59, 130, 246, 0.06) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.18);
+  font-size: 0.84rem;
+  line-height: 1.65;
 }
 
 .chatbot__message--user {

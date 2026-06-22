@@ -1,6 +1,6 @@
 /**
- * Stefano Ciancimino — Parla con Stefano
- * Knowledge base: antifrode, blockchain, AI, sicurezza
+ * Stefano Ciancimino — Assistente professionale
+ * Knowledge base: antifrode, blockchain, AI, sicurezza, consulenza
  */
 
 (function () {
@@ -11,6 +11,17 @@
   const X_ACCOUNT = 'https://x.com/TheRiser100x';
   const CRYPTO_SITE = 'https://satoshiallien.github.io/cryptoitaliafacile/index.html';
   const EMAIL = 'krown82@outlook.com';
+
+  const BOT = {
+    name: 'Assistente Stefano',
+    tagline: 'Fraud & Risk · Blockchain · AI · Consulenza',
+    welcome:
+      'Benvenuto. Sono l\'assistente virtuale di Stefano Davide Ciancimino — Fraud & Risk Analyst, Blockchain Researcher e AI Specialist.\n\n' +
+      'Posso fornire informazioni su competenze professionali, esperienza, servizi di consulenza e recapiti. Seleziona un argomento qui sotto o scrivi la tua domanda.',
+    placeholder: 'Es. esperienza antifrode, servizi di consulenza…',
+    typing: 'Elaborazione in corso…',
+    launcher: 'Assistente Stefano'
+  };
 
   const knowledgeBase = [
     {
@@ -79,22 +90,22 @@
     },
     {
       keywords: ['ciao', 'salve', 'buongiorno', 'buonasera', 'hey', 'hello', 'hi'],
-      response: 'Ciao! Benvenuto in Parla con Stefano. Posso aiutarti su antifrode, blockchain, AI, sicurezza e consulenze. Come posso assisterti?'
+      response: 'Buongiorno. Sono a disposizione per informazioni su antifrode, blockchain, intelligenza artificiale, sicurezza operativa e servizi di consulenza di Stefano Ciancimino. Come posso aiutarti?'
     },
     {
       keywords: ['grazie', 'thanks', 'perfetto', 'ok'],
-      response: 'Prego! Se hai altre domande su competenze, servizi o come collaborare con Stefano, sono qui. Puoi anche contattarlo direttamente via email o LinkedIn.'
+      response: 'Con piacere. Per ulteriori informazioni resto a disposizione, oppure puoi contattare Stefano direttamente via email o LinkedIn.'
     }
   ];
 
   const defaultResponse =
-    'Non ho trovato una risposta specifica. Prova a chiedere su: antifrode, blockchain, AI, sicurezza, consulenze o contatti. Oppure scrivi direttamente a ' + EMAIL;
+    'Al momento non dispongo di una risposta specifica su questo argomento. Ti suggerisco di chiedere informazioni su: antifrode, blockchain, AI, sicurezza, consulenza o contatti.\n\nPer richieste dirette: ' + EMAIL;
 
   const suggestions = [
+    'Profilo professionale',
     'Esperienza antifrode',
     'Blockchain & DeFi',
-    'AI & automazione',
-    'Servizi consulenza',
+    'Servizi di consulenza',
     'Contatti'
   ];
 
@@ -133,21 +144,21 @@
     chatbot.className = 'chatbot';
     chatbot.innerHTML =
       '<div class="chatbot__launcher">' +
-      '<span class="chatbot__launcher-label">Parla con Stefano</span>' +
-      '<button class="chatbot__toggle" aria-label="Parla con Stefano" title="Parla con Stefano">' +
-      '<img src="' + LOGO + '" alt="Parla con Stefano" class="chatbot__toggle-logo" width="44" height="44" loading="eager" decoding="async">' +
+      '<span class="chatbot__launcher-label">' + BOT.launcher + '</span>' +
+      '<button class="chatbot__toggle" aria-label="' + BOT.name + '" title="' + BOT.name + '">' +
+      '<img src="' + LOGO + '" alt="' + BOT.name + '" class="chatbot__toggle-logo" width="44" height="44" loading="eager" decoding="async">' +
       '</button></div>' +
       '<div class="chatbot__panel">' +
       '<div class="chatbot__header">' +
-      '<div class="chatbot__avatar"><img src="' + LOGO + '" alt="Parla con Stefano" class="chatbot__avatar-logo" width="36" height="36" loading="eager" decoding="async"></div>' +
-      '<div class="chatbot__header-info"><strong>Parla con Stefano</strong><span>Antifrode · Blockchain · AI</span></div>' +
+      '<div class="chatbot__avatar"><img src="' + LOGO + '" alt="' + BOT.name + '" class="chatbot__avatar-logo" width="36" height="36" loading="eager" decoding="async"></div>' +
+      '<div class="chatbot__header-info"><strong>' + BOT.name + '</strong><span>' + BOT.tagline + '</span></div>' +
       '<button class="chatbot__close" aria-label="Chiudi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>' +
       '</div>' +
       '<div class="chatbot__messages"></div>' +
-      '<div class="chatbot__typing">Sto scrivendo...</div>' +
+      '<div class="chatbot__typing">' + BOT.typing + '</div>' +
       '<div class="chatbot__suggestions"></div>' +
       '<div class="chatbot__input-area">' +
-      '<input type="text" class="chatbot__input" placeholder="Chiedi su antifrode, blockchain, AI..." autocomplete="off">' +
+      '<input type="text" class="chatbot__input" placeholder="' + BOT.placeholder + '" autocomplete="off">' +
       '<button class="chatbot__send" aria-label="Invia"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></button>' +
       '</div></div>';
 
@@ -177,6 +188,9 @@
 
       const msg = document.createElement('div');
       msg.className = 'chatbot__message chatbot__message--' + type;
+      if (type === 'bot' && text === BOT.welcome) {
+        msg.classList.add('chatbot__message--welcome');
+      }
       msg.textContent = text;
       wrap.appendChild(msg);
       messages.appendChild(wrap);
@@ -211,10 +225,7 @@
     toggle.addEventListener('click', function () {
       chatbot.classList.toggle('chatbot--open');
       if (chatbot.classList.contains('chatbot--open') && messages.children.length === 0) {
-        addMessage(
-          'Ciao! Sono Parla con Stefano — l\'assistente di Stefano Ciancimino. Chiedimi di antifrode, blockchain, AI, sicurezza o consulenze.',
-          'bot'
-        );
+        addMessage(BOT.welcome, 'bot');
       }
     });
 
