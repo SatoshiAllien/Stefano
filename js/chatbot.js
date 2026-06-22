@@ -7,7 +7,7 @@
   'use strict';
 
   const LINKEDIN = 'https://www.linkedin.com/in/55555555-b5947439';
-  const X_ACCOUNT = 'https://x.com/RapidResponse47';
+  const X_ACCOUNT = 'https://x.com/TheRiser100x';
   const CRYPTO_SITE = 'https://satoshiallien.github.io/cryptoitaliafacile/index.html';
   const EMAIL = 'krown82@outlook.com';
 
