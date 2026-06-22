@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parent.parent
 BASE = "https://satoshiallien.github.io/Stefano"
 TODAY = date.today().isoformat()
 ASSET = "../"
-CSS_VER = "20260622-tech"
+CSS_VER = "20260622-hosp-sa"
 LOGO_FILE = "logo-sc-hd.png"
 LOGO_VER = "20260622-brand"
 
@@ -770,6 +770,60 @@ def theme_cards_html(lang, section, articles, ui):
     return cards
 
 
+def _hospitality_experiences_block(lang, cfg):
+    timeline = "".join(
+        f'<div class="exp-timeline__item{" exp-timeline__item--highlight" if t.get("highlight") else ""} reveal">'
+        f'<span class="exp-timeline__dot" aria-hidden="true"></span>'
+        f'<h3><span class="exp-timeline__flag" aria-hidden="true">{t["flag"]}</span>{t["title"]}</h3>'
+        f'<p>{t["text"]}</p></div>'
+        for t in cfg["timeline"]
+    )
+    sa_list = "".join(f"<li>{item}</li>" for item in cfg["sa_items"])
+    icons = [
+        ("💻", "Sony Vaio" if lang == "it" else "Sony Vaio"),
+        ("📷", "Kodak" if lang == "it" else "Kodak"),
+        ("🖨", "Stampanti" if lang == "it" else "Printers"),
+        ("👨‍🔧", "Ingegneri" if lang == "it" else "Engineers"),
+    ]
+    icon_html = "".join(f'<span class="sa-exp-icon" aria-hidden="true">{i[0]} {i[1]}</span>' for i in icons)
+    gallery_alts = (
+        ("Tecnico IT — supporto Sony Vaio e Kodak", "Notebook Sony Vaio", "Stampanti e fotocamere Kodak")
+        if lang == "it"
+        else ("IT technician — Sony Vaio and Kodak support", "Sony Vaio laptop", "Kodak printers and digital cameras")
+    )
+    return f"""<section class="section section--pearl" id="experiences">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">{cfg['exp_label']}</span>
+        <h2>{cfg['exp_h2']}</h2>
+        <p>{"Italia → Regno Unito → Sudafrica" if lang == "it" else "Italy → United Kingdom → South Africa"}</p>
+      </div>
+      <div class="exp-timeline reveal">{timeline}</div>
+      <article class="sa-exp-card reveal" aria-labelledby="sa-exp-title">
+        <div class="sa-exp-card__header">
+          <span class="sa-exp-card__badge">{cfg['sa_badge']}</span>
+          <span>🇿🇦 {cfg['sa_location']}</span>
+        </div>
+        <div class="sa-exp-card__body">
+          <div>
+            <h2 id="sa-exp-title" style="font-size:1.375rem;margin-bottom:0.5rem">{cfg['sa_title']}</h2>
+            <p style="color:var(--color-turquoise);font-weight:600;margin-bottom:1rem">{cfg['sa_role']}</p>
+            <div class="sa-exp-card__icons">{icon_html}</div>
+            <ul class="sa-exp-card__list">{sa_list}</ul>
+            <p class="sa-exp-note">{cfg['sa_note']}</p>
+            <a href="hospitality/sudafrica-sony-kodak.html" class="btn btn--ghost" style="margin-top:1.25rem">{UI[lang]['read_more']} →</a>
+          </div>
+          <div class="sa-exp-card__gallery">
+            <img src="../img/hospitality-sa-tech.jpg" alt="{gallery_alts[0]}" loading="lazy" width="600" height="160">
+            <img src="../img/hospitality-sa-laptop.jpg" alt="{gallery_alts[1]}" loading="lazy" width="280" height="120">
+            <img src="../img/hospitality-sa-kodak.jpg" alt="{gallery_alts[2]}" loading="lazy" width="280" height="120">
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>"""
+
+
 def build_theme_hub(lang, section, articles, categories, config):
     ui = UI[lang]
     cfg = config[lang]
@@ -785,6 +839,9 @@ def build_theme_hub(lang, section, articles, categories, config):
         f'<div class="mini-card reveal"><div class="mini-card__icon">{m["icon"]}</div><h3>{m["title"]}</h3><p>{m["text"]}</p></div>'
         for m in cfg["mini_sections"]
     )
+    experiences = ""
+    if section == "hospitality":
+        experiences = _hospitality_experiences_block(lang, cfg)
     aibes = ""
     if section == "hospitality":
         aibes = f"""<div class="aibes-banner reveal">
@@ -819,7 +876,8 @@ def build_theme_hub(lang, section, articles, categories, config):
       </div>
     </div>
   </section>
-  {f'<section class="section section--pearl"><div class="container">{aibes}</div></section>' if aibes else ''}
+  {experiences}
+  {f'<section class="section"><div class="container">{aibes}</div></section>' if aibes else ''}
   <section class="section section--pearl">
     <div class="container">
       <div class="section-header reveal">
@@ -951,8 +1009,32 @@ HOSPITALITY_CONFIG = {
         "intro_img": "hospitality-cocktail.jpg",
         "stats": '<div class="theme-stat"><strong>10+</strong><span>anni settore</span></div><div class="theme-stat"><strong>3</strong><span>continenti</span></div><div class="theme-stat"><strong>AIBES</strong><span>qualifica</span></div><div class="theme-stat"><strong>5★</strong><span>resort</span></div>',
         "intro": """<p>Oltre <strong>10 anni</strong> nel turismo e ristorazione. Bartender professionale, mixology, sommelier e HACCP alberghiero.</p>
-<p>Esperienze in <strong>Inghilterra</strong> (Royal Shakespeare Company, corporate), <strong>Sudafrica</strong> (resort 5 stelle) e Italia.</p>
-<p>La disciplina del bancone ad alto volume forgia la stessa resilienza che uso oggi in operations e antifrode.</p>""",
+<p>Esperienze in <strong>Italia</strong>, <strong>Inghilterra</strong> (Royal Shakespeare Company, corporate) e <strong>Sudafrica</strong> — incluso un ruolo di supporto tecnico Sony Vaio / Kodak per clienti italiani.</p>
+<p>La disciplina del servizio e del troubleshooting forgia la stessa resilienza che applico oggi in operations e antifrode.</p>""",
+        "exp_label": "Percorso",
+        "exp_h2": "Esperienze Internazionali",
+        "timeline": [
+            {"flag": "🇮🇹", "title": "Esperienze in Italia", "text": "Turismo, ristorazione, bar e hotel — formazione operativa nel settore hospitality nazionale.", "highlight": False},
+            {"flag": "🇬🇧", "title": "Esperienze nel Regno Unito", "text": "Royal Shakespeare Company, eventi corporate, bar ad alto volume e standard inglesi rigorosi.", "highlight": False},
+            {"flag": "🇿🇦", "title": "Sudafrica — Sony Vaio & Kodak", "text": "Italian Technical Support Agent: supporto tecnico professionale (non hospitality).", "highlight": True},
+        ],
+        "sa_title": "Esperienza Professionale in Sudafrica – Sony Vaio & Kodak",
+        "sa_role": "Italian Technical Support Agent – Sony Vaio / Kodak",
+        "sa_location": "Sede: Sudafrica",
+        "sa_badge": "Technical Support",
+        "sa_note": "Nota: questa esperienza non riguarda il settore hospitality, ma il supporto tecnico B2B per clienti italiani.",
+        "sa_items": [
+            "Supporto tecnico professionale per clienti italiani",
+            "Troubleshooting avanzato per notebook Sony Vaio",
+            "Assistenza tecnica per stampanti Kodak, fotocamere digitali, scanner",
+            "Diagnosi problemi hardware e software",
+            "Gestione escalation tecniche",
+            "Apertura ticket e coordinamento con ingegneri Kodak",
+            "Invio ingegneri sul campo per riparazioni plotter e stampanti professionali",
+            "Supporto via telefono, email e sistemi CRM",
+            "Rispetto SLA e standard operativi",
+            "Documentazione dettagliata dei casi tecnici",
+        ],
         "aibes_text": "Formazione professionale AIBES: tecniche di miscelazione, standard internazionali IBA e approccio professionale al servizio bar.",
         "articles_label": "Blog",
         "articles_h2": "Cocktail, Mixology & Stories",
@@ -976,8 +1058,32 @@ HOSPITALITY_CONFIG = {
         "intro_img": "hospitality-cocktail.jpg",
         "stats": '<div class="theme-stat"><strong>10+</strong><span>years sector</span></div><div class="theme-stat"><strong>3</strong><span>continents</span></div><div class="theme-stat"><strong>AIBES</strong><span>qualified</span></div><div class="theme-stat"><strong>5★</strong><span>resorts</span></div>',
         "intro": """<p>Over <strong>10 years</strong> in tourism and hospitality. Professional bartender, mixology, sommelier and hospitality HACCP.</p>
-<p>Experience in <strong>England</strong> (Royal Shakespeare Company, corporate), <strong>South Africa</strong> (5-star resorts) and Italy.</p>
-<p>High-volume bar discipline forges the same resilience I use today in operations and fraud prevention.</p>""",
+<p>Experience in <strong>Italy</strong>, <strong>England</strong> (Royal Shakespeare Company, corporate) and <strong>South Africa</strong> — including a Sony Vaio / Kodak technical support role for Italian customers.</p>
+<p>Service discipline and troubleshooting forge the same resilience I apply today in operations and fraud prevention.</p>""",
+        "exp_label": "Journey",
+        "exp_h2": "International Experience",
+        "timeline": [
+            {"flag": "🇮🇹", "title": "Experience in Italy", "text": "Tourism, restaurants, bars and hotels — operational training in the national hospitality sector.", "highlight": False},
+            {"flag": "🇬🇧", "title": "Experience in the United Kingdom", "text": "Royal Shakespeare Company, corporate events, high-volume bars and rigorous English standards.", "highlight": False},
+            {"flag": "🇿🇦", "title": "South Africa — Sony Vaio & Kodak", "text": "Italian Technical Support Agent: professional technical support (not hospitality).", "highlight": True},
+        ],
+        "sa_title": "Professional Experience in South Africa – Sony Vaio & Kodak",
+        "sa_role": "Italian Technical Support Agent – Sony Vaio / Kodak",
+        "sa_location": "Location: South Africa",
+        "sa_badge": "Technical Support",
+        "sa_note": "Note: this experience is not in the hospitality sector, but in B2B technical support for Italian customers.",
+        "sa_items": [
+            "Professional technical support for Italian customers",
+            "Advanced troubleshooting for Sony Vaio laptops",
+            "Technical assistance for Kodak printers, digital cameras, scanners",
+            "Hardware and software diagnostics",
+            "Management of technical escalations",
+            "Ticket handling and coordination with Kodak engineering teams",
+            "Dispatching on-site Kodak engineers for complex plotter and professional printer repairs",
+            "Support via phone, email and CRM systems",
+            "Compliance with SLA and operational standards",
+            "Detailed case documentation",
+        ],
         "aibes_text": "Professional AIBES training: mixing techniques, IBA international standards and professional bar service approach.",
         "articles_label": "Blog",
         "articles_h2": "Cocktails, Mixology & Stories",

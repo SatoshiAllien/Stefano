@@ -249,18 +249,24 @@ HOSPITALITY_ARTICLES = [
         },
     },
     {
-        "slug": "sudafrica-resort",
+        "slug": "sudafrica-sony-kodak",
         "cat": {"it": "Esperienze", "en": "Experience"},
-        "img": "hospitality-bar.jpg",
+        "img": "hospitality-sa-tech.jpg",
         "date": "2026-06-15",
-        "read": {"it": "7 min", "en": "7 min"},
-        "title": {"it": "Sudafrica: resort 5 stelle e turismo internazionale", "en": "South Africa: 5-star resorts and international tourism"},
-        "desc": {"it": "Resort di lusso, team eterogenei e cultura del servizio africana.", "en": "Luxury resorts, diverse teams and African service culture."},
+        "read": {"it": "8 min", "en": "8 min"},
+        "title": {"it": "Esperienza Professionale in Sudafrica – Sony Vaio & Kodak", "en": "Professional Experience in South Africa – Sony Vaio & Kodak"},
+        "desc": {"it": "Italian Technical Support Agent: supporto tecnico Sony Vaio e Kodak per clienti italiani.", "en": "Italian Technical Support Agent: Sony Vaio and Kodak technical support for Italian customers."},
         "body": {
-            "it": """<p>Il periodo in <strong>Sudafrica</strong> ha arricchito il bagaglio con prospettiva unica: calore nel servizio, resort 5 stelle, clientela turistica internazionale.</p>
-<ul><li>Adattamento rapido a contesti con risorse limitate</li><li>Standard elevati anche sotto pressione</li><li>Team eterogenei e comunicazione cross-culturale</li><li>Resort sul mare e eventi VIP</li></ul>""",
-            "en": """<p>Time in <strong>South Africa</strong> enriched my experience with a unique perspective: warmth in service, 5-star resorts, international tourist clientele.</p>
-<ul><li>Rapid adaptation to resource-limited contexts</li><li>High standards even under pressure</li><li>Diverse teams and cross-cultural communication</li><li>Seaside resorts and VIP events</li></ul>""",
+            "it": """<p>In <strong>Sudafrica</strong> ho ricoperto il ruolo di <strong>Italian Technical Support Agent – Sony Vaio / Kodak</strong>. Un'esperienza nel settore tecnico, non hospitality.</p>
+<h2>Supporto clienti italiani</h2><p>Assistenza professionale via telefono, email e CRM per utenti italiani con prodotti Sony Vaio e Kodak.</p>
+<h2>Sony Vaio</h2><ul><li>Troubleshooting avanzato notebook</li><li>Diagnosi hardware e software</li><li>Escalation tecniche documentate</li></ul>
+<h2>Kodak</h2><ul><li>Stampanti, fotocamere digitali e scanner</li><li>Coordinamento con ingegneri Kodak</li><li>Invio tecnici on-site per plotter e stampanti professionali</li><li>Rispetto SLA e standard operativi</li></ul>
+<p>Competenze trasferite oggi in customer operations, troubleshooting e documentazione casi complessi.</p>""",
+            "en": """<p>In <strong>South Africa</strong> I held the role of <strong>Italian Technical Support Agent – Sony Vaio / Kodak</strong>. A technical sector experience, not hospitality.</p>
+<h2>Italian customer support</h2><p>Professional assistance via phone, email and CRM for Italian users with Sony Vaio and Kodak products.</p>
+<h2>Sony Vaio</h2><ul><li>Advanced laptop troubleshooting</li><li>Hardware and software diagnostics</li><li>Documented technical escalations</li></ul>
+<h2>Kodak</h2><ul><li>Printers, digital cameras and scanners</li><li>Coordination with Kodak engineering teams</li><li>On-site engineer dispatch for plotters and professional printers</li><li>SLA compliance and operational standards</li></ul>
+<p>Skills transferred today to customer operations, troubleshooting and complex case documentation.</p>""",
         },
     },
     {
