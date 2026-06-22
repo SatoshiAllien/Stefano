@@ -25,81 +25,126 @@
 
   const knowledgeBase = [
     {
-      keywords: ['chi sei', 'chi e', 'presentati', 'profilo', 'stefano', 'ciancimino', 'about'],
-      response: 'Sono l\'assistente di Stefano Davide Ciancimino — Fraud & Risk Analyst, Blockchain Researcher e AI Specialist con oltre 8 anni di esperienza. Ha lavorato presso PayPal in antifrode e risk operations, e continua la ricerca su blockchain e automazione AI.'
+      keywords: ['chi sei', 'chi e', 'presentati', 'profilo', 'profilo professionale', 'stefano', 'ciancimino', 'about'],
+      response:
+        'Stefano Davide Ciancimino è Fraud & Risk Analyst, Blockchain Researcher e AI Specialist, con oltre 8 anni di esperienza in ambienti ad alta complessità operativa.\n\n' +
+        'Il suo percorso combina analisi antifrode, ricerca blockchain e applicazione dell\'intelligenza artificiale a processi di risk e operations, con un approccio metodico orientato a risultati misurabili.'
     },
     {
       keywords: ['antifrode', 'frode', 'fraud', 'truffa', 'schemi', 'perdite', 'mitigazione'],
-      response: 'Stefano ha esperienza diretta in analisi antifrode: monitoraggio transazioni, identificazione schemi fraudolenti, investigazioni su account ad alto rischio e mitigazione perdite. Presso PayPal ha contribuito alla prevenzione frodi da oltre 100.000 USD e all\'ottimizzazione dei flussi antifrode.'
+      response:
+        'In ambito antifrode, Stefano si occupa di monitoraggio transazioni, rilevazione di schemi fraudolenti, investigazioni su account ad alto rischio e mitigazione delle perdite.\n\n' +
+        'Presso PayPal ha contribuito alla prevenzione di frodi per oltre 100.000 USD e all\'ottimizzazione dei flussi operativi antifrode, con focus su efficacia, accuratezza e riduzione dei falsi positivi.'
     },
     {
       keywords: ['risk', 'rischio', 'seller risk', 'buyer fraud', 'operations'],
-      response: 'Come Senior Seller Risk Operations presso PayPal (2018–2022), Stefano gestiva investigazioni su account ad alto rischio, coaching di nuovi colleghi e supporto cross-functional. La sua expertise copre valutazione del rischio, monitoraggio transazioni e riduzione perdite operative.'
+      response:
+        'Come Senior Seller Risk Operations presso PayPal (2018–2022), Stefano ha gestito investigazioni su profili ad alto rischio, formazione di nuovi analisti e coordinamento cross-funzionale.\n\n' +
+        'Le sue competenze includono valutazione del rischio, monitoraggio transazionale e implementazione di misure per la riduzione delle perdite operative.'
     },
     {
       keywords: ['blockchain', 'crypto', 'cripto', 'bitcoin', 'ethereum', 'defi', 'cefi', 'nft', 'protocolli'],
-      response: 'Stefano è Blockchain Researcher dal 2017: analizza protocolli, ecosistemi DeFi/CeFi e NFT. Ha condotto formazione interna su blockchain presso PayPal e investe attivamente nel settore crypto. Può supportare su analisi ecosistemi, ricerca protocolli e valutazione rischi crypto.'
+      response:
+        'Dal 2017 Stefano opera come Blockchain Researcher, con attività di analisi su protocolli, ecosistemi DeFi/CeFi e dinamiche NFT.\n\n' +
+        'Ha condotto formazione interna su blockchain in contesto corporate e supporta oggi attività di ricerca, valutazione dei rischi e divulgazione educativa nel settore crypto.'
     },
     {
       keywords: ['ai', 'intelligenza artificiale', 'ollama', 'llama', 'prompt', 'automazione', 'agenti', 'wsl'],
-      response: 'Stefano utilizza AI avanzata per analisi dati, prompt engineering e automazione processi operativi. Sperimenta con agenti AI locali (Ollama, WSL, Llama) e crea contenuti educativi con AI. Offre consulenza su integrazione AI nei workflow di risk e operations.'
+      response:
+        'Stefano applica l\'intelligenza artificiale ad analisi dati, prompt engineering e automazione di processi operativi.\n\n' +
+        'Sperimenta agenti AI in ambiente locale (Ollama, WSL, Llama) e offre consulenza sull\'integrazione dell\'AI nei workflow di risk, operations e content strategy.'
     },
     {
       keywords: ['sicurezza', 'security', 'investigazione', 'analisi', 'monitoraggio'],
-      response: 'Le competenze di Stefano in sicurezza includono: investigazione avanzata, problem solving analitico, identificazione pattern fraudolenti e monitoraggio transazioni in tempo reale. Approccio metodico orientato a ridurre rischi e migliorare l\'efficienza operativa.'
+      response:
+        'Le competenze in sicurezza operativa di Stefano comprendono investigazione avanzata, analisi di pattern anomali, problem solving strutturato e monitoraggio in tempo reale.\n\n' +
+        'Il suo approccio privilegia la riduzione del rischio, la continuità operativa e il miglioramento progressivo dei processi di controllo.'
     },
     {
       keywords: ['paypal', 'esperienza', 'lavoro', 'carriera', 'cv'],
-      response: 'Esperienza principale: PayPal (2013–2022) come Buyer Fraud Prevention Analyst e Senior Seller Risk Operations. Prima: National Pen (Customer Service), SYKES (Technical Support) e settore Hospitality premium. Oltre 8 anni totali in analisi, risk e customer operations.'
+      response:
+        'Il percorso professionale principale di Stefano include PayPal (2013–2022) come Buyer Fraud Prevention Analyst e Senior Seller Risk Operations.\n\n' +
+        'In precedenza ha lavorato in customer service (National Pen), technical support (SYKES) e nel settore hospitality premium, sviluppando oltre 8 anni di esperienza in analisi, risk management e operations.'
     },
     {
-      keywords: ['consulenza', 'servizi', 'collaborare', 'assumi', 'lavorare', 'preventivo'],
-      response: 'Stefano offre consulenza su: analisi antifrode e risk management, ricerca blockchain, integrazione AI nei processi operativi, formazione team e audit processi. Visita la pagina Consulenza o contattalo a ' + EMAIL + ' per una sessione introduttiva.'
+      keywords: ['consulenza', 'servizi', 'servizi di consulenza', 'collaborare', 'assumi', 'lavorare', 'preventivo'],
+      response:
+        'Stefano offre servizi di consulenza su:\n' +
+        '• Analisi antifrode e risk management\n' +
+        '• Ricerca e valutazione ecosistemi blockchain\n' +
+        '• Integrazione AI nei processi operativi\n' +
+        '• Formazione team e audit di processo\n\n' +
+        'Per una valutazione preliminare è possibile visitare la pagina Consulenza o scrivere a ' + EMAIL + '.'
     },
     {
       keywords: ['contatti', 'contattare', 'email', 'telefono', 'linkedin', 'scrivere', 'twitter', 'x.com'],
-      response: 'Puoi contattare Stefano:\n• Email: ' + EMAIL + '\n• Telefono: +39 377 350 3049\n• LinkedIn: ' + LINKEDIN + '\n• X: ' + X_ACCOUNT + '\n\nRisponde entro 24 ore lavorative.'
+      response:
+        'Recapiti professionali di Stefano Ciancimino:\n' +
+        '• Email: ' + EMAIL + '\n' +
+        '• Telefono: +39 377 350 3049\n' +
+        '• LinkedIn: ' + LINKEDIN + '\n' +
+        '• X: ' + X_ACCOUNT + '\n\n' +
+        'Tempo medio di risposta: entro 24 ore lavorative.'
     },
     {
       keywords: ['cryptoitalia', 'crypto italia', 'crypto facile', 'satoshi', 'little satoshi', 'blogger', 'blog crypto', 'divulgatore'],
-      response: 'Stefano è il creatore di Crypto Italia Facile (The Little Satoshi News) — portale educativo dove spiega Bitcoin, blockchain e Web3 in modo semplice dal 2015. Visita: ' + CRYPTO_SITE + '\n\nTrovi guide, news, sicurezza crypto, Cardano e l\'assistente AI Satoshi.'
+      response:
+        'Stefano è fondatore di Crypto Italia Facile (The Little Satoshi News), progetto educativo attivo dal 2015 dedicato a Bitcoin, blockchain e Web3 in linguaggio accessibile.\n\n' +
+        'Portale: ' + CRYPTO_SITE + '\n\n' +
+        'Contenuti disponibili: guide, news, sicurezza crypto, Cardano e assistente AI Satoshi.'
     },
     {
       keywords: ['rapidresponse', 'rapid response', 'x account', 'profilo x'],
-      response: 'Segui Stefano su X: ' + X_ACCOUNT + ' — aggiornamenti su crypto, analisi e contenuti da Crypto Italia Facile.'
+      response:
+        'Per aggiornamenti professionali e contenuti su crypto e analisi di settore, Stefano è presente su X:\n' + X_ACCOUNT
     },
     {
       keywords: ['lingue', 'inglese', 'italiano', 'language'],
-      response: 'Stefano parla Italiano (madrelingua) e Inglese (C1 fluente). Ideale per contesti internazionali come PayPal e progetti cross-border in blockchain e fintech.'
+      response:
+        'Stefano è madrelingua italiano e possiede un livello C1 in inglese, con esperienza consolidata in contesti internazionali (PayPal) e progetti cross-border in fintech e blockchain.'
     },
     {
       keywords: ['tecnologia', 'linux', 'macos', 'citrix', 'troubleshooting', 'rete', 'hardware'],
-      response: 'Competenze tecniche: macOS, Linux/Ubuntu, Citrix, troubleshooting rete/hardware/software. Background in technical support (SYKES) con gestione SLA e risoluzione problemi complessi.'
+      response:
+        'Dal punto di vista tecnico, Stefano lavora con macOS, Linux/Ubuntu e Citrix, con competenze in troubleshooting di rete, hardware e software.\n\n' +
+        'Il background in technical support (SYKES) include gestione SLA e risoluzione strutturata di incidenti complessi.'
     },
     {
       keywords: ['customer', 'clienti', 'service', 'operazioni', 'empatia'],
-      response: 'Stefano combina analisi tecnica con eccellente customer operations: gestione casi complessi, comunicazione chiara, empatia e orientamento alla soluzione. Esperienza in contesti ad alto impatto come PayPal e settore premium hospitality.'
+      response:
+        'Stefano unisce rigore analitico e capacità relazionale: gestione di casi complessi, comunicazione chiara e orientamento alla soluzione.\n\n' +
+        'Questo equilibrio è stato consolidato in contesti ad alto impatto come PayPal e nel settore hospitality premium.'
     },
     {
       keywords: ['blog', 'articoli', 'contenuti', 'educativi'],
-      response: 'Il blog professionale copre antifrode, sicurezza, blockchain, AI e risk management. Articoli educativi pensati per professionisti del settore fintech e tech. Visita la sezione Blog per gli ultimi contenuti.'
+      response:
+        'Il blog professionale affronta tematiche di antifrode, sicurezza, blockchain, AI e risk management, con contenuti pensati per professionisti fintech e tech.\n\n' +
+        'Per gli ultimi articoli, visita la sezione Blog del portfolio.'
     },
     {
       keywords: ['portfolio', 'progetti', 'demo', 'presentazioni'],
-      response: 'Nel portfolio trovi: articoli educativi su antifrode e blockchain, analisi ecosistemi crypto, demo AI con agenti locali e presentazioni formative. Visita la pagina Portfolio per esplorare i progetti.'
+      response:
+        'Il portfolio include articoli specialistici, analisi di ecosistemi crypto, demo AI con agenti locali e materiali formativi.\n\n' +
+        'Per una panoramica completa dei progetti, visita la pagina Portfolio.'
     },
     {
       keywords: ['ciao', 'salve', 'buongiorno', 'buonasera', 'hey', 'hello', 'hi'],
-      response: 'Buongiorno. Sono a disposizione per informazioni su antifrode, blockchain, intelligenza artificiale, sicurezza operativa e servizi di consulenza di Stefano Ciancimino. Come posso aiutarti?'
+      response:
+        'Buongiorno. Sono a disposizione per fornire informazioni su competenze, esperienza e servizi di Stefano Ciancimino in ambito antifrode, blockchain, AI e sicurezza operativa.\n\n' +
+        'Come posso assisterti?'
     },
     {
       keywords: ['grazie', 'thanks', 'perfetto', 'ok'],
-      response: 'Con piacere. Per ulteriori informazioni resto a disposizione, oppure puoi contattare Stefano direttamente via email o LinkedIn.'
+      response:
+        'Con piacere. Resto a disposizione per ulteriori chiarimenti.\n\n' +
+        'Per un contatto diretto con Stefano: ' + EMAIL + ' oppure LinkedIn.'
     }
   ];
 
   const defaultResponse =
-    'Al momento non dispongo di una risposta specifica su questo argomento. Ti suggerisco di chiedere informazioni su: antifrode, blockchain, AI, sicurezza, consulenza o contatti.\n\nPer richieste dirette: ' + EMAIL;
+    'Al momento non dispongo di informazioni specifiche su questo argomento.\n\n' +
+    'Ti invito a richiedere dettagli su: profilo professionale, antifrode, blockchain, AI, sicurezza, consulenza o contatti.\n\n' +
+    'Per comunicazioni dirette: ' + EMAIL;
 
   const suggestions = [
     'Profilo professionale',
