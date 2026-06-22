@@ -6,6 +6,7 @@
 (function () {
   'use strict';
 
+  const LOGO = 'img/logo-sc-hd.png';
   const LINKEDIN = 'https://www.linkedin.com/in/55555555-b5947439';
   const X_ACCOUNT = 'https://x.com/TheRiser100x';
   const CRYPTO_SITE = 'https://satoshiallien.github.io/cryptoitaliafacile/index.html';
@@ -132,13 +133,12 @@
     chatbot.className = 'chatbot';
     chatbot.innerHTML =
       '<button class="chatbot__toggle" aria-label="Apri assistente AI">' +
-      '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">' +
-      '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>' +
-      '</svg></button>' +
+      '<img src="' + LOGO + '" alt="" class="chatbot__toggle-logo" width="44" height="44" loading="eager" decoding="async">' +
+      '</button>' +
       '<div class="chatbot__panel">' +
       '<div class="chatbot__header">' +
-      '<div class="chatbot__avatar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a4 4 0 0 1 4 4v1h1a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3h-1v1a4 4 0 0 1-8 0v-1H8a3 3 0 0 1-3-3v-2a3 3 0 0 1 3-3h1V6a4 4 0 0 1 4-4z"/></svg></div>' +
-      '<div class="chatbot__header-info"><strong>AI Assistant</strong><span>Antifrode · Blockchain · AI</span></div>' +
+      '<div class="chatbot__avatar"><img src="' + LOGO + '" alt="" class="chatbot__avatar-logo" width="36" height="36" loading="eager" decoding="async"></div>' +
+      '<div class="chatbot__header-info"><strong>Stefano AI</strong><span>Antifrode · Blockchain · AI</span></div>' +
       '<button class="chatbot__close" aria-label="Chiudi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>' +
       '</div>' +
       '<div class="chatbot__messages"></div>' +
@@ -160,10 +160,24 @@
     const suggestionsEl = chatbot.querySelector('.chatbot__suggestions');
 
     function addMessage(text, type) {
+      const wrap = document.createElement('div');
+      wrap.className = 'chatbot__message-row chatbot__message-row--' + type;
+
+      if (type === 'bot') {
+        const avatar = document.createElement('img');
+        avatar.src = LOGO;
+        avatar.alt = '';
+        avatar.className = 'chatbot__msg-logo';
+        avatar.width = 24;
+        avatar.height = 24;
+        wrap.appendChild(avatar);
+      }
+
       const msg = document.createElement('div');
       msg.className = 'chatbot__message chatbot__message--' + type;
       msg.textContent = text;
-      messages.appendChild(msg);
+      wrap.appendChild(msg);
+      messages.appendChild(wrap);
       messages.scrollTop = messages.scrollHeight;
     }
 
