@@ -1,16 +1,231 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://satoshiallien.github.io/Stefano/</loc><lastmod>2026-06-22</lastmod><priority>1.0</priority></url>
-  <url><loc>https://satoshiallien.github.io/Stefano/index.html</loc><lastmod>2026-06-22</lastmod><priority>1.0</priority></url>
-  <url><loc>https://satoshiallien.github.io/Stefano/chi-sono.html</loc><lastmod>2026-06-22</lastmod><priority>0.9</priority></url>
-  <url><loc>https://satoshiallien.github.io/Stefano/competenze.html</loc><lastmod>2026-06-22</lastmod><priority>0.9</priority></url>
-  <url><loc>https://satoshiallien.github.io/Stefano/esperienza.html</loc><lastmod>2026-06-22</lastmod><priority>0.9</priority></url>
-  <url><loc>https://satoshiallien.github.io/Stefano/portfolio.html</loc><lastmod>2026-06-22</lastmod><priority>0.8</priority></url>
-  <url><loc>https://satoshiallien.github.io/Stefano/blog.html</loc><lastmod>2026-06-22</lastmod><priority>0.8</priority></url>
-  <url><loc>https://satoshiallien.github.io/Stefano/consulenza.html</loc><lastmod>2026-06-22</lastmod><priority>0.8</priority></url>
-  <url><loc>https://satoshiallien.github.io/Stefano/contatti.html</loc><lastmod>2026-06-22</lastmod><priority>0.8</priority></url>
-  <url><loc>https://satoshiallien.github.io/Stefano/cv.html</loc><lastmod>2026-06-22</lastmod><priority>0.7</priority></url>
-  <url><loc>https://satoshiallien.github.io/Stefano/articolo-antifrode.html</loc><lastmod>2026-06-15</lastmod><priority>0.7</priority></url>
-  <url><loc>https://satoshiallien.github.io/Stefano/articolo-blockchain.html</loc><lastmod>2026-06-08</lastmod><priority>0.7</priority></url>
-  <url><loc>https://satoshiallien.github.io/Stefano/articolo-ai.html</loc><lastmod>2026-06-01</lastmod><priority>0.7</priority></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/it/index.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/index.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/en/index.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/index.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/it/about.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/about.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/about.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/en/about.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/about.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/about.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/it/ai-blockchain.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/ai-blockchain.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/ai-blockchain.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/en/ai-blockchain.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/ai-blockchain.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/ai-blockchain.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/it/tech.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/tech.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/tech.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/en/tech.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/tech.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/tech.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/it/hospitality.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/hospitality.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/hospitality.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/en/hospitality.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/hospitality.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/hospitality.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/it/fitness.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/fitness.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/fitness.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/en/fitness.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/fitness.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/fitness.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/it/portfolio.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/portfolio.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/portfolio.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/en/portfolio.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/portfolio.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/portfolio.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/it/blog.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/blog.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/en/blog.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/blog.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/it/contact.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/contact.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/en/contact.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/contact.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/it/cv.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/cv.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/cv.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/en/cv.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/cv.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/cv.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/it/blog/antifrode-pagamenti.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/blog/antifrode-pagamenti.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/blog/antifrode-pagamenti.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/en/blog/antifrode-pagamenti.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/blog/antifrode-pagamenti.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/blog/antifrode-pagamenti.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/it/blog/defi-2026.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/blog/defi-2026.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/blog/defi-2026.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/en/blog/defi-2026.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/blog/defi-2026.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/blog/defi-2026.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/it/blog/ai-ollama.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/blog/ai-ollama.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/blog/ai-ollama.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/en/blog/ai-ollama.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/blog/ai-ollama.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/blog/ai-ollama.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/it/blog/massa-muscolare.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/blog/massa-muscolare.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/blog/massa-muscolare.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/en/blog/massa-muscolare.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/blog/massa-muscolare.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/blog/massa-muscolare.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/it/blog/alimentazione-forma.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/blog/alimentazione-forma.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/blog/alimentazione-forma.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/en/blog/alimentazione-forma.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/blog/alimentazione-forma.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/blog/alimentazione-forma.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/it/blog/zucchero-raffinato.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/blog/zucchero-raffinato.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/blog/zucchero-raffinato.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/en/blog/zucchero-raffinato.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/blog/zucchero-raffinato.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/blog/zucchero-raffinato.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/it/blog/integrazione-proteica.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/blog/integrazione-proteica.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/blog/integrazione-proteica.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/en/blog/integrazione-proteica.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/blog/integrazione-proteica.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/blog/integrazione-proteica.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/it/blog/hospitality-estero.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/blog/hospitality-estero.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/blog/hospitality-estero.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/en/blog/hospitality-estero.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/blog/hospitality-estero.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/blog/hospitality-estero.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/it/blog/tech-build-pc.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/blog/tech-build-pc.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/blog/tech-build-pc.html"/>
+  </url>
+  <url>
+    <loc>https://satoshiallien.github.io/Stefano/en/blog/tech-build-pc.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="it-IT" href="https://satoshiallien.github.io/Stefano/it/blog/tech-build-pc.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://satoshiallien.github.io/Stefano/en/blog/tech-build-pc.html"/>
+  </url>
 </urlset>

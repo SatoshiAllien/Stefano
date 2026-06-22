@@ -10,7 +10,10 @@
   const navToggle = document.querySelector('.nav-toggle');
   const nav = document.querySelector('.nav');
   const themeToggle = document.querySelector('.theme-toggle');
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const pathParts = window.location.pathname.split('/').filter(Boolean);
+  const langSegment = pathParts.find(function (p) { return p === 'it' || p === 'en'; });
+  const currentPage = pathParts[pathParts.length - 1] || 'index.html';
+  const pageLang = document.body.getAttribute('data-lang') || langSegment || 'it';
 
   /* Theme */
   function getPreferredTheme() {
@@ -162,17 +165,20 @@
         if (existingError) existingError.remove();
         group.classList.remove('form-group--error');
 
+        const isEn = pageLang === 'en';
         let error = '';
 
         if (field.required && !input.value.trim()) {
-          error = 'Questo campo è obbligatorio';
+          error = isEn ? 'This field is required' : 'Questo campo è obbligatorio';
         } else if (field.type === 'email' && input.value.trim()) {
           const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
           if (!emailRegex.test(input.value.trim())) {
-            error = 'Inserisci un indirizzo email valido';
+            error = isEn ? 'Enter a valid email address' : 'Inserisci un indirizzo email valido';
           }
         } else if (field.minLength && input.value.trim().length < field.minLength) {
-          error = 'Inserisci almeno ' + field.minLength + ' caratteri';
+          error = isEn
+            ? 'Enter at least ' + field.minLength + ' characters'
+            : 'Inserisci almeno ' + field.minLength + ' caratteri';
         }
 
         if (error) {
@@ -189,7 +195,10 @@
         if (successMessage) {
           successMessage.classList.add('form-success--visible');
           successMessage.textContent =
-            'Grazie per il messaggio! Ti risponderò entro 24 ore lavorative.';
+            document.body.getAttribute('data-form-success') ||
+            (pageLang === 'en'
+              ? 'Thank you for your message! I will reply within 24 business hours.'
+              : 'Grazie per il messaggio! Ti risponderò entro 24 ore lavorative.');
         }
         contactForm.reset();
 
@@ -206,7 +215,7 @@
   const qrCanvas = document.getElementById('qr-cv');
 
   if (qrCanvas && typeof QRCode !== 'undefined') {
-    const cvUrl = window.location.origin + window.location.pathname.replace(/[^/]+$/, 'cv.html');
+    const cvUrl = window.location.origin + window.location.pathname.replace(/[^/]+$/, '') + 'cv.html';
     QRCode.toCanvas(qrCanvas, cvUrl, {
       width: 160,
       margin: 2,
