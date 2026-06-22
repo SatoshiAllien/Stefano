@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parent.parent
 BASE = "https://satoshiallien.github.io/Stefano"
 TODAY = date.today().isoformat()
 ASSET = "../"
-CSS_VER = "20260622-chatbot-en"
+CSS_VER = "20260622-tech-pc"
 LOGO_FILE = "logo-sc-hd.png"
 LOGO_VER = "20260622-brand"
 
@@ -575,6 +575,10 @@ TECH_PAGE = {
         "stats": '<div class="theme-stat"><strong>PC</strong><span>build custom</span></div><div class="theme-stat"><strong>3</strong><span>OS principali</span></div><div class="theme-stat"><strong>AI</strong><span>server locale</span></div><div class="theme-stat"><strong>Web</strong><span>design & SEO</span></div>',
         "pc_h2": "Costruzione PC Avanzati & Workstation Personalizzate",
         "pc_lead": "Capacità di assemblare un PC completo da zero — dalla scelta dei componenti al cable management, fino alla configurazione BIOS/UEFI avanzata.",
+        "pc_build_label": "Showcase",
+        "pc_build_h3": "Il mio PC Build",
+        "pc_build_desc": "Workstation gaming personalizzata — chassis ROG, liquid cooling, RGB verde e display mod tema Ferrari. Assemblaggio completo con cable management e tuning airflow.",
+        "pc_build_alt": "PC gaming custom con case vetro, illuminazione RGB verde, liquid cooling ROG e display Ferrari",
         "pc_chips": [
             {"icon": "🧩", "title": "Schede madri", "desc": "ATX, mATX, ITX — selezione per caso e uso"},
             {"icon": "⚙", "title": "CPU", "desc": "AMD Ryzen e Intel — pairing ottimale"},
@@ -624,6 +628,10 @@ TECH_PAGE = {
         "stats": '<div class="theme-stat"><strong>PC</strong><span>custom builds</span></div><div class="theme-stat"><strong>3</strong><span>main OS</span></div><div class="theme-stat"><strong>AI</strong><span>local server</span></div><div class="theme-stat"><strong>Web</strong><span>design & SEO</span></div>',
         "pc_h2": "Advanced PC Building & Custom Workstations",
         "pc_lead": "Full ability to assemble a complete PC from scratch — from component selection and cable management to advanced BIOS/UEFI configuration.",
+        "pc_build_label": "Showcase",
+        "pc_build_h3": "My PC Build",
+        "pc_build_desc": "Custom gaming workstation — ROG chassis, liquid cooling, green RGB lighting and Ferrari-themed display mod. Full assembly with cable management and airflow tuning.",
+        "pc_build_alt": "Custom gaming PC with glass case, green RGB lighting, ROG liquid cooling and Ferrari display mod",
         "pc_chips": [
             {"icon": "🧩", "title": "Motherboards", "desc": "ATX, mATX, ITX — matched to case and use case"},
             {"icon": "⚙", "title": "CPUs", "desc": "AMD Ryzen and Intel — optimal pairing"},
@@ -704,8 +712,16 @@ def build_tech(lang):
         <h2>{t['pc_h2']}</h2>
         <p>{t['pc_lead']}</p>
       </div>
-      <div class="tech-split reveal">
-        <img src="../img/tech-pc-gaming.jpg" alt="Custom PC build" class="tech-split__img" loading="lazy" width="640" height="400">
+      <figure class="tech-build-showcase reveal">
+        <img src="../img/tech-my-pc-build.jpg" alt="{t['pc_build_alt']}" class="tech-build-showcase__img" loading="lazy" width="739" height="721">
+        <figcaption class="tech-build-showcase__caption">
+          <span class="section-label">{t['pc_build_label']}</span>
+          <h3>{t['pc_build_h3']}</h3>
+          <p>{t['pc_build_desc']}</p>
+        </figcaption>
+      </figure>
+      <div class="tech-split reveal" style="margin-top:2.5rem">
+        <img src="../img/tech-pc-gaming.jpg" alt="Custom PC build components" class="tech-split__img" loading="lazy" width="640" height="400">
         <div>
           <div class="tech-component-grid">{_tech_chips(t['pc_chips'])}</div>
         </div>

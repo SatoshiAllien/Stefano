@@ -2332,6 +2332,39 @@ p:last-child { margin-bottom: 0; }
   background: linear-gradient(160deg, rgba(10, 10, 18, 0.88) 0%, rgba(10, 10, 18, 0.5) 50%, rgba(45, 212, 191, 0.12) 100%);
 }
 
+.tech-build-showcase {
+  margin-top: 2rem;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-lg);
+  background: var(--bg-card);
+}
+
+.tech-build-showcase__img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  object-position: center;
+}
+
+.tech-build-showcase__caption {
+  padding: 1.5rem 1.75rem 1.75rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.tech-build-showcase__caption h3 {
+  font-size: 1.25rem;
+  margin: 0.35rem 0 0.5rem;
+}
+
+.tech-build-showcase__caption p {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
 .tech-split {
   display: grid;
   grid-template-columns: 1fr 1.1fr;
