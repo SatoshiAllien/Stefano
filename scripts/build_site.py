@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parent.parent
 BASE = "https://satoshiallien.github.io/Stefano"
 TODAY = date.today().isoformat()
 ASSET = "../"
-CSS_VER = "20260622-hero-logo"
+CSS_VER = "20260622-tech"
 LOGO_FILE = "logo-sc-hd.png"
 LOGO_VER = "20260622-brand"
 
@@ -412,7 +412,7 @@ def build_index(lang):
         passions = [
             ("about.html", "CV / Chi Sono", "8+ anni PayPal, competenze internazionali, AI e blockchain."),
             ("ai-blockchain.html", "AI & Blockchain", "Ricerca dal 2017, DeFi/CeFi, Ollama e prompt engineering."),
-            ("tech.html", "Tech & Hobby", "Build PC, multi-OS, PowerShell, server AI locale."),
+            ("tech.html", "Tech Lab", "PC Building, OS, Web Design, AI Automation."),
             ("hospitality.html", "Hospitality", "10+ anni turismo, UK, Sudafrica, mixology."),
             ("fitness.html", "Fitness & Health", "15+ anni bodybuilding, nutrizione e articoli dedicati."),
             ("blog.html", "Blog", "6 categorie: antifrode, crypto, AI, fitness, hospitality, tech."),
@@ -426,7 +426,7 @@ def build_index(lang):
         passions = [
             ("about.html", "CV / About Me", "8+ years at PayPal, international skills, AI and blockchain."),
             ("ai-blockchain.html", "AI & Blockchain", "Research since 2017, DeFi/CeFi, Ollama and prompt engineering."),
-            ("tech.html", "Tech & Hobbies", "PC builds, multi-OS, PowerShell, local AI server."),
+            ("tech.html", "Tech Lab", "PC Building, OS, Web Design, AI Automation."),
             ("hospitality.html", "Hospitality", "10+ years tourism, UK, South Africa, mixology."),
             ("fitness.html", "Fitness & Health", "15+ years bodybuilding, nutrition and dedicated articles."),
             ("blog.html", "Blog", "6 categories: fraud, crypto, AI, fitness, hospitality, tech."),
@@ -544,23 +544,212 @@ def build_ai_blockchain(lang):
         build_section(lang, "ai-blockchain", "Innovation", "AI & Blockchain", "Research, automation and decentralised ecosystem analysis.", c)
 
 
+def _tech_chips(chips):
+    return "".join(
+        f'<div class="tech-chip reveal"><div class="tech-chip__icon">{c["icon"]}</div><div><strong>{c["title"]}</strong><span>{c["desc"]}</span></div></div>'
+        for c in chips
+    )
+
+
+def _tech_skill_cards(cards):
+    items = ""
+    for card in cards:
+        lis = "".join(f"<li>{x}</li>" for x in card["list"])
+        items += f"""<article class="tech-skill-card reveal">
+          <div class="tech-skill-card__icon">{card["icon"]}</div>
+          <h3>{card["title"]}</h3>
+          <p>{card["desc"]}</p>
+          <ul>{lis}</ul>
+        </article>"""
+    return items
+
+
+TECH_PAGE = {
+    "it": {
+        "title": "Tech Lab — PC Building, OS, Web Design & AI | Stefano Ciancimino",
+        "desc": "Costruzione PC avanzati, installazione sistemi operativi, web design, automazione AI con Ollama e WSL. Workstation personalizzate.",
+        "label": "Tech Lab",
+        "h1": "PC Building · OS · Web Design · AI Automation",
+        "sub": "Hardware, sistemi operativi, sviluppo web e automazione AI — competenze tecniche applicate con metodo professionale.",
+        "intro": "Passione concreta per <strong>hardware e software</strong>: assemblo PC da zero, configuro sistemi operativi multi‑piattaforma, progetto siti web moderni e costruisco automazioni AI locali.",
+        "stats": '<div class="theme-stat"><strong>PC</strong><span>build custom</span></div><div class="theme-stat"><strong>3</strong><span>OS principali</span></div><div class="theme-stat"><strong>AI</strong><span>server locale</span></div><div class="theme-stat"><strong>Web</strong><span>design & SEO</span></div>',
+        "pc_h2": "Costruzione PC Avanzati & Workstation Personalizzate",
+        "pc_lead": "Capacità di assemblare un PC completo da zero — dalla scelta dei componenti al cable management, fino alla configurazione BIOS/UEFI avanzata.",
+        "pc_chips": [
+            {"icon": "🧩", "title": "Schede madri", "desc": "ATX, mATX, ITX — selezione per caso e uso"},
+            {"icon": "⚙", "title": "CPU", "desc": "AMD Ryzen e Intel — pairing ottimale"},
+            {"icon": "🎮", "title": "GPU", "desc": "NVIDIA e AMD — gaming e CUDA AI"},
+            {"icon": "🔌", "title": "PSU modulari", "desc": "Wattaggio corretto e efficienza 80+"},
+            {"icon": "💾", "title": "RAM", "desc": "DDR5 ad alte prestazioni, dual channel"},
+            {"icon": "💿", "title": "SSD NVMe", "desc": "Storage veloce per OS e modelli AI"},
+            {"icon": "❄", "title": "Cooling", "desc": "Aria e AIO — curve PWM ottimizzate"},
+            {"icon": "🌬", "title": "Airflow", "desc": "Cable management e flusso d'aria"},
+        ],
+        "ws_h2": "Workstation dedicate",
+        "workstations": [
+            {"icon": "🤖", "title": "AI", "desc": "GPU potente, RAM 64GB+, NVMe per dataset"},
+            {"icon": "🎮", "title": "Gaming", "desc": "Bilanciamento CPU/GPU, cooling silenzioso"},
+            {"icon": "🖥", "title": "Virtualizzazione", "desc": "Core multipli, RAM abbondante, IOMMU"},
+            {"icon": "⌨", "title": "Sviluppo", "desc": "Multi-monitor, SSD rapidi, ambiente stabile"},
+        ],
+        "os_h2": "Installazione e Configurazione Sistemi Operativi",
+        "os_lead": "Setup completo di ambienti Windows, Linux e macOS — inclusi multi‑boot, WSL2 e troubleshooting avanzato.",
+        "os_list": [
+            "Installazione Windows 11 Pro",
+            "Installazione Linux/Ubuntu",
+            "Installazione macOS su hardware compatibile",
+            "PowerShell avanzato e automazioni",
+            "Terminale Linux, Bash e Zsh",
+            "Setup multi‑boot e partizionamento",
+            "Configurazione WSL2 + GPU passthrough",
+            "Troubleshooting driver, kernel, rete e pacchetti",
+        ],
+        "skills_h2": "Competenze Tech",
+        "skills": [
+            {"icon": "🌐", "title": "Web Designer", "desc": "Creazione siti moderni, portfolio e blog professionali.", "list": ["HTML, CSS, JavaScript", "UX/UI e design responsive", "SEO e struttura semantica", "Dark mode e performance"]},
+            {"icon": "🧠", "title": "Automazione AI", "desc": "Agenti locali e workflow automatizzati con LLM.", "list": ["Ollama, WSL, Llama, Qwen, Mistral", "Prompt engineering operativo", "Script per workflow ripetitivi", "Server AI locale con GPU"]},
+            {"icon": "🖥", "title": "PC Building", "desc": "Assemblaggio e ottimizzazione hardware professionale.", "list": ["Selezione componenti su misura", "BIOS/UEFI tuning", "Stress test e stabilità", "Upgrade e manutenzione"]},
+            {"icon": "⌨", "title": "Scripting & Terminal", "desc": "Automazione cross‑platform e troubleshooting.", "list": ["PowerShell e Bash", "Task scheduling", "Rete, driver, hardware debug", "Pipeline CI locale"]},
+        ],
+        "stack_label": "Stack & Tools",
+        "stack": ["Windows 11", "Ubuntu", "macOS", "WSL2", "PowerShell", "Bash", "HTML/CSS/JS", "Ollama", "CUDA", "NVMe", "Docker"],
+    },
+    "en": {
+        "title": "Tech Lab — PC Building, OS, Web Design & AI | Stefano Ciancimino",
+        "desc": "Advanced PC building, operating system installation, web design, AI automation with Ollama and WSL. Custom workstations.",
+        "label": "Tech Lab",
+        "h1": "PC Building · OS · Web Design · AI Automation",
+        "sub": "Hardware, operating systems, web development and AI automation — technical skills applied with professional methodology.",
+        "intro": "Hands-on passion for <strong>hardware and software</strong>: I build PCs from scratch, configure multi-platform operating systems, design modern websites and build local AI automations.",
+        "stats": '<div class="theme-stat"><strong>PC</strong><span>custom builds</span></div><div class="theme-stat"><strong>3</strong><span>main OS</span></div><div class="theme-stat"><strong>AI</strong><span>local server</span></div><div class="theme-stat"><strong>Web</strong><span>design & SEO</span></div>',
+        "pc_h2": "Advanced PC Building & Custom Workstations",
+        "pc_lead": "Full ability to assemble a complete PC from scratch — from component selection and cable management to advanced BIOS/UEFI configuration.",
+        "pc_chips": [
+            {"icon": "🧩", "title": "Motherboards", "desc": "ATX, mATX, ITX — matched to case and use case"},
+            {"icon": "⚙", "title": "CPUs", "desc": "AMD Ryzen and Intel — optimal pairing"},
+            {"icon": "🎮", "title": "GPUs", "desc": "NVIDIA and AMD — gaming and CUDA AI"},
+            {"icon": "🔌", "title": "Modular PSUs", "desc": "Correct wattage and 80+ efficiency"},
+            {"icon": "💾", "title": "RAM", "desc": "High-performance DDR5, dual channel"},
+            {"icon": "💿", "title": "NVMe SSD", "desc": "Fast storage for OS and AI models"},
+            {"icon": "❄", "title": "Cooling", "desc": "Air and AIO — optimised PWM curves"},
+            {"icon": "🌬", "title": "Airflow", "desc": "Cable management and airflow tuning"},
+        ],
+        "ws_h2": "Dedicated workstations",
+        "workstations": [
+            {"icon": "🤖", "title": "AI", "desc": "Powerful GPU, 64GB+ RAM, NVMe for datasets"},
+            {"icon": "🎮", "title": "Gaming", "desc": "Balanced CPU/GPU, quiet cooling"},
+            {"icon": "🖥", "title": "Virtualisation", "desc": "Multi-core, abundant RAM, IOMMU"},
+            {"icon": "⌨", "title": "Development", "desc": "Multi-monitor, fast SSDs, stable environment"},
+        ],
+        "os_h2": "Operating System Installation & Configuration",
+        "os_lead": "Full setup of Windows, Linux and macOS environments — including dual-boot, WSL2 and advanced troubleshooting.",
+        "os_list": [
+            "Windows 11 Pro installation",
+            "Linux/Ubuntu installation",
+            "macOS on compatible hardware",
+            "Advanced PowerShell and automation",
+            "Linux terminal, Bash and Zsh",
+            "Dual-boot setup and partitioning",
+            "WSL2 configuration + GPU passthrough",
+            "Driver, kernel, network and package troubleshooting",
+        ],
+        "skills_h2": "Tech Skills",
+        "skills": [
+            {"icon": "🌐", "title": "Web Designer", "desc": "Modern websites, portfolios and professional blogs.", "list": ["HTML, CSS, JavaScript", "UX/UI and responsive design", "SEO and semantic structure", "Dark mode and performance"]},
+            {"icon": "🧠", "title": "AI Automation", "desc": "Local agents and automated workflows with LLMs.", "list": ["Ollama, WSL, Llama, Qwen, Mistral", "Operational prompt engineering", "Scripts for repetitive workflows", "Local AI server with GPU"]},
+            {"icon": "🖥", "title": "PC Building", "desc": "Professional hardware assembly and optimisation.", "list": ["Tailored component selection", "BIOS/UEFI tuning", "Stress testing and stability", "Upgrades and maintenance"]},
+            {"icon": "⌨", "title": "Scripting & Terminal", "desc": "Cross-platform automation and troubleshooting.", "list": ["PowerShell and Bash", "Task scheduling", "Network, driver, hardware debug", "Local CI pipelines"]},
+        ],
+        "stack_label": "Stack & Tools",
+        "stack": ["Windows 11", "Ubuntu", "macOS", "WSL2", "PowerShell", "Bash", "HTML/CSS/JS", "Ollama", "CUDA", "NVMe", "Docker"],
+    },
+}
+
+
 def build_tech(lang):
-    if lang == "it":
-        c = """<p>Passione per hardware, sistemi operativi e automazione. Build PC avanzati, installazione Windows/Linux/macOS, PowerShell, Bash e terminale.</p>
-<div class="feature-list">
-<div class="feature-item"><div class="feature-item__icon">🖥</div><div><h3>Build PC avanzati</h3><p>Selezione componenti, airflow, overclocking moderato e workstation per AI.</p></div></div>
-<div class="feature-item"><div class="feature-item__icon">⚡</div><div><h3>GPU acceleration</h3><p>CUDA, inferenza locale, modelli quantizzati su server domestico.</p></div></div>
-<div class="feature-item"><div class="feature-item__icon">🔧</div><div><h3>Scripting</h3><p>PowerShell, Bash, automazioni e troubleshooting rete/hardware/software.</p></div></div>
-</div>"""
-        build_section(lang, "tech", "Tech Lab", "Tech & Hobby", "Build, sistemi operativi e sperimentazione tecnologica.", c)
-    else:
-        c = """<p>Passion for hardware, operating systems and automation. Advanced PC builds, Windows/Linux/macOS setup, PowerShell, Bash and terminal.</p>
-<div class="feature-list">
-<div class="feature-item"><div class="feature-item__icon">🖥</div><div><h3>Advanced PC builds</h3><p>Component selection, airflow, moderate overclocking and AI workstations.</p></div></div>
-<div class="feature-item"><div class="feature-item__icon">⚡</div><div><h3>GPU acceleration</h3><p>CUDA, local inference, quantised models on home server.</p></div></div>
-<div class="feature-item"><div class="feature-item__icon">🔧</div><div><h3>Scripting</h3><p>PowerShell, Bash, automation and network/hardware/software troubleshooting.</p></div></div>
-</div>"""
-        build_section(lang, "tech", "Tech Lab", "Tech & Hobbies", "Builds, operating systems and tech experimentation.", c)
+    t = TECH_PAGE[lang]
+    page = "tech.html"
+    og = f"{BASE}/img/tech-hero.jpg"
+    os_items = "".join(f"<li>{x}</li>" for x in t["os_list"])
+    ws_items = "".join(
+        f'<div class="tech-workstation reveal"><div class="tech-workstation__icon">{w["icon"]}</div><h3>{w["title"]}</h3><p>{w["desc"]}</p></div>'
+        for w in t["workstations"]
+    )
+    stack = "".join(f'<span class="tech-stack__pill">{p}</span>' for p in t["stack"])
+    body = f"""{head(lang, page, t["title"], t["desc"], og_image=og)}
+<body data-lang="{lang}">
+{header(lang, page, nav_active=page)}
+  <section class="theme-hero theme-hero--tech">
+    <img src="../img/tech-hero.jpg" alt="" class="theme-hero__bg" width="1200" height="500" fetchpriority="high">
+    <div class="theme-hero__overlay"></div>
+    <div class="container reveal">
+      <span class="section-label">{t['label']}</span>
+      <h1>{t['h1']}</h1>
+      <p>{t['sub']}</p>
+      <div class="theme-stats">{t['stats']}</div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="theme-intro reveal">
+        <img src="../img/tech-hardware.jpg" alt="{t['pc_h2']}" class="theme-intro__img" loading="lazy" width="600" height="375">
+        <div class="content-prose"><p>{t['intro']}</p><div class="tech-stack">{stack}</div></div>
+      </div>
+    </div>
+  </section>
+  <section class="section section--pearl" id="pc-building">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Hardware</span>
+        <h2>{t['pc_h2']}</h2>
+        <p>{t['pc_lead']}</p>
+      </div>
+      <div class="tech-split reveal">
+        <img src="../img/tech-pc-gaming.jpg" alt="Custom PC build" class="tech-split__img" loading="lazy" width="640" height="400">
+        <div>
+          <div class="tech-component-grid">{_tech_chips(t['pc_chips'])}</div>
+        </div>
+      </div>
+      <div style="margin-top:3rem">
+        <h3 style="text-align:center;margin-bottom:1.5rem">{t['ws_h2']}</h3>
+        <div class="tech-workstation-row">{ws_items}</div>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="os-install">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Software</span>
+        <h2>{t['os_h2']}</h2>
+        <p>{t['os_lead']}</p>
+      </div>
+      <div class="tech-split reveal">
+        <div class="content-prose">
+          <ul>{os_items}</ul>
+        </div>
+        <img src="../img/tech-linux-terminal.jpg" alt="Linux terminal" class="tech-split__img" loading="lazy" width="640" height="400">
+      </div>
+    </div>
+  </section>
+  <section class="section section--pearl" id="skills">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Skills</span>
+        <h2>{t['skills_h2']}</h2>
+      </div>
+      <div class="tech-split reveal" style="margin-bottom:2.5rem">
+        <img src="../img/tech-ai-workstation.jpg" alt="AI workstation" class="tech-split__img" loading="lazy" width="640" height="400">
+        <div class="content-prose"><p>{"Integrazione tra hardware potente, ambienti OS flessibili e automazione AI locale per workflow produttivi end-to-end." if lang == "it" else "Integration of powerful hardware, flexible OS environments and local AI automation for end-to-end productive workflows."}</p></div>
+      </div>
+      <div class="tech-skill-grid">{_tech_skill_cards(t['skills'])}</div>
+      <div style="text-align:center;margin-top:2.5rem" class="reveal">
+        <span class="section-label">{t['stack_label']}</span>
+        <div class="tech-stack" style="justify-content:center;margin-top:1rem">{stack}</div>
+      </div>
+    </div>
+  </section>
+{footer(lang)}"""
+    write(ROOT / lang / page, body)
 
 
 def theme_cards_html(lang, section, articles, ui):
