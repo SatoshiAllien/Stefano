@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pattern fraudolenti nei pagamenti digitali: come identificarli e mitigarli. Articolo di Stefano Ciancimino.">
+  <meta name="keywords" content="antifrode, frode, pagamenti digitali, fintech, risk management">
+  <meta property="og:title" content="Pattern fraudolenti nei pagamenti digitali">
+  <meta property="og:description" content="Come identificare e mitigare schemi di frode nelle transazioni online.">
+  <meta property="og:type" content="article">
+  <title>Pattern fraudolenti nei pagamenti digitali — Stefano Ciancimino</title>
+  <link rel="canonical" href="https://stefanociancimino.dev/articolo-antifrode.html">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lato:wght@400;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo"><div class="logo__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="logo__text">Stefano Ciancimino</div><div class="logo__sub">Fraud · Blockchain · AI</div></div></a>
+      <div class="header__actions"><button class="theme-toggle" aria-label="Cambia tema"><svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg></button><button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button></div>
+      <nav class="nav"><a href="index.html" class="nav__link">Home</a><a href="blog.html" class="nav__link">Blog</a><a href="consulenza.html" class="nav__link">Consulenza</a><a href="contatti.html" class="nav__link nav__cta btn btn--primary">Contattami</a></nav>
+    </div>
+  </header>
+
+  <header class="article-header">
+    <div class="container">
+      <nav class="breadcrumb"><a href="index.html">Home</a><span>/</span><a href="blog.html">Blog</a><span>/</span><span>Antifrode</span></nav>
+      <span class="section-label">Antifrode</span>
+      <h1>Pattern fraudolenti nei pagamenti digitali: come identificarli</h1>
+      <div class="article-meta">
+        <span>Stefano Davide Ciancimino</span>
+        <span>15 Giugno 2026</span>
+        <span>6 min di lettura</span>
+      </div>
+    </div>
+  </header>
+
+  <article class="article-content">
+    <p>Dopo nove anni nel settore antifrode presso PayPal, ho osservato che i pattern fraudolenti evolvono rapidamente, ma alcuni schemi ricorrenti rimangono costanti. In questo articolo condivido un framework pratico per identificarli e mitigarli.</p>
+
+    <h2>1. Account takeover (ATO)</h2>
+    <p>L'accesso non autorizzato a un account legittimo resta uno dei vettori più comuni. Segnali tipici:</p>
+    <ul>
+      <li>Cambio improvviso di password, email o metodo di pagamento</li>
+      <li>Login da geolocalizzazioni inconsuete</li>
+      <li>Transazioni ad alto valore subito dopo il cambio credenziali</li>
+    </ul>
+    <p>Mitigazione: monitoraggio comportamentale, verifica a più fattori e limiti transazionali dinamici.</p>
+
+    <h2>2. Friendly fraud e chargeback abuse</h2>
+    <p>Il cliente legittimo contesta una transazione valida per ottenere rimborso. Richiede analisi dello storico acquisti, comunicazioni e pattern di reclamo.</p>
+
+    <h2>3. Schemi organizzati multi-account</h2>
+    <p>Reti di account collegati tramite device fingerprint, IP, metodi di pagamento o indirizzi. L'investigazione cross-account è fondamentale per smantellare l'intero schema.</p>
+
+    <h2>4. Best practice operative</h2>
+    <ol>
+      <li>Definire soglie di alert basate su dati storici</li>
+      <li>Documentare ogni investigazione con evidenze</li>
+      <li>Collaborare con team legal, product e customer support</li>
+      <li>Rivedere periodicamente le regole antifrode</li>
+    </ol>
+
+    <h2>Conclusione</h2>
+    <p>L'antifrode efficace combina tecnologia, analisi umana e processi documentati. Se vuoi approfondire per la tua organizzazione, <a href="consulenza.html">contattami per una consulenza</a>.</p>
+  </article>
+
+  <section class="section section--pearl">
+    <div class="container">
+      <h3 style="margin-bottom:1.5rem">Articoli correlati</h3>
+      <div class="blog-grid">
+        <article class="blog-card"><div class="blog-card__body"><span class="blog-card__category" style="position:static;display:inline-block;margin-bottom:0.75rem">Blockchain</span><h3>DeFi nel 2026</h3><a href="articolo-blockchain.html" class="blog-card__link">Leggi →</a></div></article>
+        <article class="blog-card"><div class="blog-card__body"><span class="blog-card__category" style="position:static;display:inline-block;margin-bottom:0.75rem">AI</span><h3>Agenti AI locali</h3><a href="articolo-ai.html" class="blog-card__link">Leggi →</a></div></article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="container"><div class="footer__bottom"><span>© 2026 Stefano Davide Ciancimino</span></div></div></footer>
+  <script src="js/main.js"></script>
+  <script src="js/chatbot.js"></script>
+</body>
+</html>

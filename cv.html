@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV — Stefano Davide Ciancimino</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; color: #0f172a; background: #f8f9fb; padding: 2rem; }
+    .cv-page { max-width: 800px; margin: 0 auto; background: #fff; padding: 3rem; box-shadow: 0 4px 20px rgba(15,23,42,0.08); border-radius: 12px; }
+    .cv-header { border-bottom: 3px solid #14b8a6; padding-bottom: 1.5rem; margin-bottom: 2rem; }
+    .cv-header h1 { font-family: 'Poppins', sans-serif; font-size: 2rem; color: #0f172a; }
+    .cv-header .role { color: #14b8a6; font-weight: 600; margin: 0.5rem 0 1rem; }
+    .cv-contact { display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 0.875rem; color: #64748b; }
+    .cv-contact a { color: #0d9488; text-decoration: none; }
+    .cv-section { margin-bottom: 2rem; }
+    .cv-section h2 { font-family: 'Poppins', sans-serif; font-size: 1.125rem; color: #14b8a6; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid #e8ecf1; padding-bottom: 0.5rem; margin-bottom: 1rem; }
+    .cv-item { margin-bottom: 1.25rem; }
+    .cv-item h3 { font-size: 1rem; font-weight: 600; }
+    .cv-item .meta { font-size: 0.875rem; color: #14b8a6; font-weight: 500; margin-bottom: 0.375rem; }
+    .cv-item ul { margin-left: 1.25rem; font-size: 0.9375rem; color: #334155; }
+    .cv-item li { margin-bottom: 0.25rem; }
+    .cv-skills { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .cv-skills h4 { font-size: 0.875rem; font-weight: 600; margin-bottom: 0.375rem; }
+    .cv-skills p { font-size: 0.875rem; color: #64748b; }
+    .print-btn { position: fixed; top: 1rem; right: 1rem; padding: 0.75rem 1.5rem; background: #14b8a6; color: #fff; border: none; border-radius: 9999px; cursor: pointer; font-weight: 500; }
+    @media print { body { background: #fff; padding: 0; } .cv-page { box-shadow: none; padding: 0; } .print-btn { display: none; } }
+  </style>
+</head>
+<body>
+  <button class="print-btn" onclick="window.print()">Stampa / Salva PDF</button>
+  <div class="cv-page">
+    <header class="cv-header">
+      <h1>Stefano Davide Ciancimino</h1>
+      <p class="role">Fraud & Risk Analyst · Blockchain Researcher · Customer Operations Specialist</p>
+      <div class="cv-contact">
+        <span>krown82@outlook.com</span>
+        <span>+39 377 350 3049</span>
+        <a href="https://www.linkedin.com/in/55555555-b5947439">LinkedIn</a>
+      </div>
+    </header>
+
+    <section class="cv-section">
+      <h2>Profilo</h2>
+      <p style="font-size:0.9375rem;line-height:1.7;color:#334155">Professionista con oltre 8 anni di esperienza in analisi antifrode, gestione del rischio, blockchain, customer operations e tecnologia. Orientato a migliorare sicurezza, efficienza operativa e qualità del servizio. Italiano (madrelingua), Inglese (C1).</p>
+    </section>
+
+    <section class="cv-section">
+      <h2>Esperienza</h2>
+      <div class="cv-item">
+        <h3>Senior Seller Risk Operations</h3>
+        <div class="meta">PayPal · 2018 – 2022</div>
+        <ul>
+          <li>Investigazioni su account ad alto rischio</li>
+          <li>Mitigazione frodi e riduzione perdite</li>
+          <li>Coaching nuovi colleghi e supporto cross-functional</li>
+        </ul>
+      </div>
+      <div class="cv-item">
+        <h3>Buyer Fraud Prevention Analyst</h3>
+        <div class="meta">PayPal · 2013 – 2018</div>
+        <ul>
+          <li>Monitoraggio transazioni e smantellamento schemi fraudolenti</li>
+          <li>Prevenzione frodi da 100.000 USD</li>
+          <li>Ottimizzazione flussi antifrode</li>
+        </ul>
+      </div>
+      <div class="cv-item">
+        <h3>Blockchain Researcher & Crypto Investor</h3>
+        <div class="meta">Indipendente · 2017 – oggi</div>
+        <ul>
+          <li>Ricerca protocolli e analisi ecosistemi DeFi/CeFi</li>
+          <li>Formazione interna blockchain presso PayPal</li>
+        </ul>
+      </div>
+      <div class="cv-item">
+        <h3>Customer Service</h3>
+        <div class="meta">National Pen · 2011 – 2013</div>
+        <ul><li>Gestione clienti, reclami, documentazione, formazione utenti</li></ul>
+      </div>
+      <div class="cv-item">
+        <h3>Technical Support</h3>
+        <div class="meta">SYKES · 2009 – 2010</div>
+        <ul><li>Supporto hardware/software, troubleshooting, SLA</li></ul>
+      </div>
+      <div class="cv-item">
+        <h3>Hospitality — Settore Premium</h3>
+        <div class="meta">2000 – 2010</div>
+        <ul><li>Luxury, eventi corporate, resort 5 stelle</li></ul>
+      </div>
+    </section>
+
+    <section class="cv-section">
+      <h2>Competenze</h2>
+      <div class="cv-skills">
+        <div><h4>Analisi & Sicurezza</h4><p>Antifrode, risk assessment, investigazione, monitoraggio transazioni</p></div>
+        <div><h4>Tecnologia</h4><p>Blockchain, DeFi/CeFi, NFT, macOS, Linux, Citrix</p></div>
+        <div><h4>AI & Automazione</h4><p>Prompt engineering, Ollama, WSL, Llama, automazione processi</p></div>
+        <div><h4>Customer Operations</h4><p>Gestione casi complessi, comunicazione, orientamento soluzione</p></div>
+      </div>
+    </section>
+
+    <section class="cv-section">
+      <h2>Istruzione</h2>
+      <div class="cv-item">
+        <h3>Studi in Turismo & Economia</h3>
+        <div class="meta">Università di Palermo</div>
+      </div>
+      <div class="cv-item">
+        <h3>Diploma Turismo & Hotel</h3>
+        <div class="meta">IPSAR Molinari</div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
