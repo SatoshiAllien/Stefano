@@ -325,7 +325,7 @@ p:last-child { margin-bottom: 0; }
   height: 40px;
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.5)) drop-shadow(0 0 6px rgba(225, 29, 72, 0.25));
+  filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.35)) drop-shadow(0 0 4px rgba(139, 92, 246, 0.2));
 }
 
 .logo__text {
