@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parent.parent
 BASE = "https://satoshiallien.github.io/Stefano"
 TODAY = date.today().isoformat()
 ASSET = "../"
-CSS_VER = "20260622-hosp-sa"
+CSS_VER = "20260622-chatbot-en"
 LOGO_FILE = "logo-sc-hd.png"
 LOGO_VER = "20260622-brand"
 
