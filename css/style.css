@@ -2039,3 +2039,224 @@ p:last-child { margin-bottom: 0; }
   color: var(--color-white);
   font-size: 1.125rem;
 }
+
+/* Thematic blog hubs */
+.theme-hero {
+  position: relative;
+  min-height: 340px;
+  display: flex;
+  align-items: flex-end;
+  padding: calc(var(--header-height) + 3rem) 0 3rem;
+  overflow: hidden;
+}
+
+.theme-hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.theme-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(10, 10, 18, 0.85) 0%, rgba(10, 10, 18, 0.55) 50%, rgba(20, 184, 166, 0.15) 100%);
+  z-index: 1;
+}
+
+.theme-hero .container {
+  position: relative;
+  z-index: 2;
+  color: var(--color-white);
+}
+
+.theme-hero h1 { color: var(--color-white); margin-bottom: 0.75rem; }
+.theme-hero p { color: var(--color-pearl); max-width: 640px; font-size: 1.125rem; }
+
+.theme-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.theme-stat {
+  text-align: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(8px);
+}
+
+.theme-stat strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--color-turquoise-light);
+}
+
+.theme-stat span { font-size: 0.75rem; opacity: 0.85; }
+
+.theme-intro {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.theme-intro__img {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+
+.category-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.category-nav__btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.category-nav__btn:hover,
+.category-nav__btn--active {
+  background: var(--color-turquoise-dark);
+  border-color: var(--color-turquoise-dark);
+  color: var(--color-white);
+}
+
+.theme-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.theme-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-turquoise);
+}
+
+.theme-card__img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.theme-card__body {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.theme-card__cat {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-turquoise);
+  margin-bottom: 0.5rem;
+}
+
+.theme-card__body h3 {
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+}
+
+.theme-card__body p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  flex: 1;
+}
+
+.theme-card__link {
+  margin-top: 1rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.theme-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.mini-sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+
+.mini-card {
+  padding: 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.mini-card__icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.mini-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+.mini-card p, .mini-card ul { font-size: 0.875rem; color: var(--text-secondary); }
+.mini-card ul { list-style: disc; margin-left: 1.25rem; margin-top: 0.5rem; }
+
+.recipe-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 2rem;
+  margin: 1.5rem 0;
+}
+
+.recipe-card h2 { font-size: 1.125rem; color: var(--color-turquoise); margin-top: 1rem; }
+.recipe-card h2:first-child { margin-top: 0; }
+
+.aibes-banner {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  padding: 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  margin-bottom: 2.5rem;
+}
+
+.aibes-banner img {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .theme-intro { grid-template-columns: 1fr; }
+  .theme-hero { min-height: 280px; }
+  .aibes-banner { flex-direction: column; text-align: center; }
+}

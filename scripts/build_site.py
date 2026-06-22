@@ -1,13 +1,21 @@
 #!/usr/bin/env python3
 """Generate multilingual IT/EN site for Stefano Ciancimino portfolio."""
-import os
 from pathlib import Path
 from datetime import date
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from theme_content import FITNESS_ARTICLES, HOSPITALITY_ARTICLES, FITNESS_CATEGORIES, HOSPITALITY_CATEGORIES
 
 ROOT = Path(__file__).resolve().parent.parent
 BASE = "https://satoshiallien.github.io/Stefano"
 TODAY = date.today().isoformat()
 ASSET = "../"
+CSS_VER = "20260622-theme"
+
+
+def asset_prefix(depth=1):
+    return "../" * depth
 
 NAV = {
     "it": [
@@ -15,7 +23,7 @@ NAV = {
         ("about.html", "Chi Sono"),
         ("ai-blockchain.html", "AI & Blockchain"),
         ("tech.html", "Tech"),
-        ("hospitality.html", "Hospitality"),
+        ("hospitality.html", "Bar & Hospitality"),
         ("fitness.html", "Fitness"),
         ("portfolio.html", "Portfolio"),
         ("blog.html", "Blog"),
@@ -26,7 +34,7 @@ NAV = {
         ("about.html", "About Me"),
         ("ai-blockchain.html", "AI & Blockchain"),
         ("tech.html", "Tech"),
-        ("hospitality.html", "Hospitality"),
+        ("hospitality.html", "Bar & Hospitality"),
         ("fitness.html", "Fitness"),
         ("portfolio.html", "Portfolio"),
         ("blog.html", "Blog"),
@@ -267,13 +275,15 @@ ARTICLES = [
 ]
 
 
-def head(lang, page_file, title, description, alt_lang_file=None):
+def head(lang, page_file, title, description, alt_lang_file=None, depth=1, og_image=None):
     canonical = f"{BASE}/{lang}/{page_file}"
     alt_lang = "en" if lang == "it" else "it"
     alt_href = f"{BASE}/{alt_lang}/{alt_lang_file or page_file}"
     hreflang_self = "it-IT" if lang == "it" else "en-GB"
     hreflang_alt = "en-GB" if lang == "it" else "it-IT"
     html_lang = "it" if lang == "it" else "en-GB"
+    ap = asset_prefix(depth)
+    og = og_image or f"{BASE}/img/logo-sc-hd.png"
     return f"""<!DOCTYPE html>
 <html lang="{html_lang}">
 <head>
@@ -283,37 +293,39 @@ def head(lang, page_file, title, description, alt_lang_file=None):
   <meta name="author" content="Stefano Davide Ciancimino">
   <meta property="og:title" content="{title}">
   <meta property="og:description" content="{description}">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="{BASE}/img/logo-sc-hd.png">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="{og}">
   <title>{title}</title>
   <link rel="canonical" href="{canonical}">
   <link rel="alternate" hreflang="{hreflang_self}" href="{canonical}">
   <link rel="alternate" hreflang="{hreflang_alt}" href="{alt_href}">
   <link rel="alternate" hreflang="x-default" href="{BASE}/it/{page_file}">
-  <link rel="icon" href="{ASSET}img/favicon.png" type="image/png">
-  <link rel="apple-touch-icon" href="{ASSET}img/favicon.png">
+  <link rel="icon" href="{ap}img/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="{ap}img/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lato:wght@400;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{ASSET}css/style.css?v=20260622-ml">
+  <link rel="stylesheet" href="{ap}css/style.css?v={CSS_VER}">
 </head>"""
 
 
-def header(lang, current):
+def header(lang, current, depth=1, nav_active=None):
     ui = UI[lang]
-    other = "en" if lang == "it" else "it"
+    ap = asset_prefix(depth)
+    np = "" if depth == 1 else asset_prefix(depth - 1)
+    up = asset_prefix(depth)
+    active_page = nav_active or (current.split("/")[0] if "/" in current else current)
     nav_links = "".join(
-        f'<a href="{href}" class="nav__link{" nav__link--active" if href == current else ""}">{label}</a>'
+        f'<a href="{np}{href}" class="nav__link{" nav__link--active" if href == active_page else ""}">{label}</a>'
         for href, label in NAV[lang]
     )
     it_active = " lang-switch__btn--active" if lang == "it" else ""
     en_active = " lang-switch__btn--active" if lang == "en" else ""
-    alt_path = f"../{other}/{current}"
     return f"""  <header class="header">
     <div class="container header__inner">
-      <a href="index.html" class="logo">
+      <a href="{np}index.html" class="logo">
         <div class="logo__icon logo__icon--brand">
-          <img src="{ASSET}img/logo-sc-hd.png" alt="Stefano Ciancimino logo" class="logo__img" width="40" height="40" loading="eager" decoding="async">
+          <img src="{ap}img/logo-sc-hd.png" alt="Stefano Ciancimino logo" class="logo__img" width="40" height="40" loading="eager" decoding="async">
         </div>
         <div>
           <div class="logo__text">Stefano Ciancimino</div>
@@ -322,8 +334,8 @@ def header(lang, current):
       </a>
       <div class="header__actions">
         <nav class="lang-switch" aria-label="Language">
-          <a href="../it/{current}" class="lang-switch__btn{it_active}" aria-label="{ui['lang_it_aria']}" title="Italiano">🇮🇹</a>
-          <a href="../en/{current}" class="lang-switch__btn{en_active}" aria-label="{ui['lang_en_aria']}" title="English">🇬🇧</a>
+          <a href="{up}it/{current}" class="lang-switch__btn{it_active}" aria-label="{ui['lang_it_aria']}" title="Italiano">🇮🇹</a>
+          <a href="{up}en/{current}" class="lang-switch__btn{en_active}" aria-label="{ui['lang_en_aria']}" title="English">🇬🇧</a>
         </nav>
         <button class="theme-toggle" aria-label="{ui['theme_aria']}">
           <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -333,22 +345,23 @@ def header(lang, current):
       </div>
       <nav class="nav">
         {nav_links}
-        <a href="contact.html" class="nav__link nav__cta btn btn--primary">{ui['cta']}</a>
+        <a href="{np}contact.html" class="nav__link nav__cta btn btn--primary">{ui['cta']}</a>
       </nav>
     </div>
   </header>"""
 
 
-def footer(lang):
+def footer(lang, depth=1):
     ui = UI[lang]
+    ap = asset_prefix(depth)
     year = date.today().year
     return f"""  <footer class="footer">
     <div class="container">
       <div class="footer__grid">
         <div class="footer__brand">
-          <a href="index.html" class="logo">
+          <a href="{ap}index.html" class="logo">
             <div class="logo__icon logo__icon--brand">
-              <img src="{ASSET}img/logo-transparent.png" alt="" class="logo__img" width="36" height="36" loading="lazy">
+              <img src="{ap}img/logo-transparent.png" alt="" class="logo__img" width="36" height="36" loading="lazy">
             </div>
             <div><div class="logo__text">Stefano Ciancimino</div><div class="logo__sub">{ui['footer_tagline']}</div></div>
           </a>
@@ -365,8 +378,8 @@ def footer(lang):
       <div class="footer__bottom"><span>© {year} Stefano Davide Ciancimino — {ui['footer_rights']}</span></div>
     </div>
   </footer>
-  <script src="{ASSET}js/main.js?v=20260622-ml"></script>
-  <script src="{ASSET}js/chatbot.js?v=20260622-ml"></script>
+  <script src="{ap}js/main.js?v={CSS_VER}"></script>
+  <script src="{ap}js/chatbot.js?v={CSS_VER}"></script>
 </body>
 </html>"""
 
@@ -548,43 +561,258 @@ def build_tech(lang):
         build_section(lang, "tech", "Tech Lab", "Tech & Hobbies", "Builds, operating systems and tech experimentation.", c)
 
 
+def theme_cards_html(lang, section, articles, ui):
+    cards = ""
+    for i, art in enumerate(articles):
+        slug = f"{section}/{art['slug']}.html"
+        img = art.get("img", "fitness-hero.jpg")
+        cards += f"""<article class="theme-card reveal" data-cat="{art['cat'][lang]}">
+          <img src="../img/{img}" alt="" class="theme-card__img" loading="lazy" width="400" height="180">
+          <div class="theme-card__body">
+            <span class="theme-card__cat">{art['cat'][lang]}</span>
+            <h3>{art['title'][lang]}</h3>
+            <p>{art['desc'][lang]}</p>
+            <div class="blog-card__meta"><span>{art['date']}</span><span>{art['read'][lang]}</span></div>
+            <a href="{slug}" class="theme-card__link">{ui['read_article']} →</a>
+          </div>
+        </article>"""
+    return cards
+
+
+def build_theme_hub(lang, section, articles, categories, config):
+    ui = UI[lang]
+    cfg = config[lang]
+    page = f"{section}.html"
+    og = f"{BASE}/img/{cfg['hero_img']}"
+    cards = theme_cards_html(lang, section, articles, ui)
+    cats = categories[lang]
+    cat_btns = "".join(
+        f'<button type="button" class="category-nav__btn{" category-nav__btn--active" if i == 0 else ""}" data-filter="{c}">{c}</button>'
+        for i, c in enumerate(cats)
+    )
+    mini = "".join(
+        f'<div class="mini-card reveal"><div class="mini-card__icon">{m["icon"]}</div><h3>{m["title"]}</h3><p>{m["text"]}</p></div>'
+        for m in cfg["mini_sections"]
+    )
+    aibes = ""
+    if section == "hospitality":
+        aibes = f"""<div class="aibes-banner reveal">
+          <img src="../img/hospitality-bar.jpg" alt="AIBES formazione barman" width="80" height="80" loading="lazy">
+          <div>
+            <span class="section-label">{"Formazione" if lang == "it" else "Training"}</span>
+            <h2>{"AIBES — Associazione Italiana Barman e Sostenitori" if lang == "it" else "AIBES — Italian Barman Association"}</h2>
+            <p>{cfg["aibes_text"]}</p>
+            <a href="https://aibes.it/" target="_blank" rel="noopener" class="btn btn--ghost">aibes.it →</a>
+            <a href="hospitality/aibes-formazione.html" class="btn btn--primary" style="margin-left:.5rem">{ui["read_more"]} →</a>
+          </div>
+        </div>"""
+
+    body = f"""{head(lang, page, cfg["title"], cfg["desc"], og_image=og)}
+<body data-lang="{lang}">
+{header(lang, page, nav_active=page)}
+  <section class="theme-hero">
+    <img src="../img/{cfg['hero_img']}" alt="" class="theme-hero__bg" width="1200" height="500" fetchpriority="high">
+    <div class="theme-hero__overlay"></div>
+    <div class="container reveal">
+      <span class="section-label">{cfg['label']}</span>
+      <h1>{cfg['h1']}</h1>
+      <p>{cfg['sub']}</p>
+      <div class="theme-stats">{cfg['stats']}</div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="theme-intro reveal">
+        <img src="../img/{cfg['intro_img']}" alt="{cfg['h1']}" class="theme-intro__img" loading="lazy" width="600" height="450">
+        <div class="content-prose">{cfg['intro']}</div>
+      </div>
+    </div>
+  </section>
+  {f'<section class="section section--pearl"><div class="container">{aibes}</div></section>' if aibes else ''}
+  <section class="section section--pearl">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">{cfg['articles_label']}</span>
+        <h2>{cfg['articles_h2']}</h2>
+      </div>
+      <nav class="category-nav reveal" aria-label="Categories">{cat_btns}</nav>
+      <div class="theme-grid" id="theme-grid">{cards}</div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">{cfg['guides_label']}</span>
+        <h2>{cfg['guides_h2']}</h2>
+      </div>
+      <div class="mini-sections">{mini}</div>
+    </div>
+  </section>
+{footer(lang)}
+  <script>
+  (function(){{
+    var grid=document.getElementById('theme-grid');if(!grid)return;
+    document.querySelectorAll('.category-nav__btn').forEach(function(btn){{
+      btn.addEventListener('click',function(){{
+        document.querySelectorAll('.category-nav__btn').forEach(function(b){{b.classList.remove('category-nav__btn--active');}});
+        btn.classList.add('category-nav__btn--active');
+        var f=btn.getAttribute('data-filter');
+        var all={cats[0]!r};
+        grid.querySelectorAll('.theme-card').forEach(function(c){{
+          c.style.display=(f===all||c.getAttribute('data-cat')===f)?'':'none';
+        }});
+      }});
+    }});
+  }})();
+  </script>
+</body></html>"""
+    write(ROOT / lang / page, body)
+
+
+def build_theme_article(lang, section, art):
+    ui = UI[lang]
+    slug = f"{section}/{art['slug']}.html"
+    hub = f"{section}.html"
+    hub_name = "Fitness" if section == "fitness" else ("Hospitality & Bar" if lang == "en" else "Hospitality & Bar")
+    title = f"{art['title'][lang]} — Stefano Ciancimino"
+    og = f"{BASE}/img/{art.get('img', 'fitness-hero.jpg')}"
+    body = f"""{head(lang, slug, title, art['desc'][lang], depth=2, og_image=og)}
+<body data-lang="{lang}">
+{header(lang, slug, depth=2, nav_active=hub)}
+  <header class="article-header">
+    <div class="container">
+      <nav class="breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../{hub}">{hub_name}</a><span>/</span><span>{art['cat'][lang]}</span></nav>
+      <span class="section-label">{art['cat'][lang]}</span>
+      <h1>{art['title'][lang]}</h1>
+      <div class="article-meta"><span>Stefano Davide Ciancimino</span><span>{art['date']}</span><span>{art['read'][lang]}</span></div>
+    </div>
+  </header>
+  <article class="article-content">
+    <div class="container">
+      <img src="../../img/{art.get('img','fitness-hero.jpg')}" alt="{art['title'][lang]}" style="width:100%;max-height:360px;object-fit:cover;border-radius:12px;margin-bottom:2rem" loading="lazy">
+      <div class="content-prose">{art['body'][lang]}</div>
+      <p style="margin-top:2rem"><a href="../{hub}" class="btn btn--ghost">← {ui['all_articles']}</a></p>
+    </div>
+  </article>
+{footer(lang, depth=2)}"""
+    write(ROOT / lang / slug, body)
+
+
+FITNESS_CONFIG = {
+    "it": {
+        "title": "Health & Fitness Blog — Stefano Ciancimino",
+        "desc": "15+ anni di bodybuilding, nutrizione sportiva, guide e articoli evidence-based.",
+        "label": "Health & Fitness",
+        "h1": "Blog Fitness Professionale",
+        "sub": "Bodybuilding, corsa, bici, nutrizione e benessere — approccio naturale, costante e disciplinato.",
+        "hero_img": "fitness-blog-hero.jpg",
+        "intro_img": "fitness-nutrition.jpg",
+        "stats": '<div class="theme-stat"><strong>15+</strong><span>anni fitness</span></div><div class="theme-stat"><strong>5</strong><span>sport</span></div><div class="theme-stat"><strong>100%</strong><span>naturale</span></div><div class="theme-stat"><strong>∞</strong><span>costanza</span></div>',
+        "intro": """<p>Da oltre <strong>15 anni</strong> il fitness è parte della mia identità: bodybuilding, corsa su strada, bici da corsa e sport outdoor.</p>
+<p>Approccio <strong>naturale, costante e disciplinato</strong>. Conoscenze solide di nutrizione sportiva, ricomposizione corporea e performance.</p>
+<p>La stessa lezione che applico nel lavoro: <strong>metodo e pazienza</strong> battono l'intensità sporadica.</p>""",
+        "articles_label": "Blog",
+        "articles_h2": "Guide & Articoli Fitness",
+        "guides_label": "Guide rapide",
+        "guides_h2": "Mini-sezioni",
+        "mini_sections": [
+            {"icon": "📅", "title": "Routine settimanale", "text": "Push/pull/legs + cardio LISS + outdoor. 4–5 sessioni efficaci a settimana."},
+            {"icon": "🎯", "title": "Principianti", "text": "3 sessioni/settimana, tecnica prima del carico, proteine e sonno 7+ ore."},
+            {"icon": "📈", "title": "Avanzati", "text": "Periodizzazione, deload, mesocicli ipertrofia/forza/definizione."},
+            {"icon": "⛰", "title": "Outdoor", "text": "Corsa, bici, trail — il fitness non sta solo in palestra."},
+            {"icon": "🧘", "title": "Recupero", "text": "Mobilità, foam rolling, sonno — i muscoli crescono quando riposi."},
+        ],
+    },
+    "en": {
+        "title": "Health & Fitness Blog — Stefano Ciancimino",
+        "desc": "15+ years of bodybuilding, sports nutrition, guides and evidence-based articles.",
+        "label": "Health & Fitness",
+        "h1": "Professional Fitness Blog",
+        "sub": "Bodybuilding, running, cycling, nutrition and wellbeing — natural, consistent and disciplined approach.",
+        "hero_img": "fitness-blog-hero.jpg",
+        "intro_img": "fitness-nutrition.jpg",
+        "stats": '<div class="theme-stat"><strong>15+</strong><span>years fitness</span></div><div class="theme-stat"><strong>5</strong><span>sports</span></div><div class="theme-stat"><strong>100%</strong><span>natural</span></div><div class="theme-stat"><strong>∞</strong><span>consistency</span></div>',
+        "intro": """<p>For over <strong>15 years</strong>, fitness has been part of my identity: bodybuilding, road running, road cycling and outdoor sports.</p>
+<p>A <strong>natural, consistent and disciplined</strong> approach. Solid knowledge of sports nutrition, body recomposition and performance.</p>
+<p>The same lesson I apply at work: <strong>method and patience</strong> beat sporadic intensity.</p>""",
+        "articles_label": "Blog",
+        "articles_h2": "Fitness Guides & Articles",
+        "guides_label": "Quick guides",
+        "guides_h2": "Mini-sections",
+        "mini_sections": [
+            {"icon": "📅", "title": "Weekly routine", "text": "Push/pull/legs + LISS cardio + outdoor. 4–5 effective sessions per week."},
+            {"icon": "🎯", "title": "Beginners", "text": "3 sessions/week, technique before load, protein and 7+ hours sleep."},
+            {"icon": "📈", "title": "Advanced", "text": "Periodisation, deloads, hypertrophy/strength/cutting mesocycles."},
+            {"icon": "⛰", "title": "Outdoor", "text": "Running, cycling, trail — fitness isn't only in the gym."},
+            {"icon": "🧘", "title": "Recovery", "text": "Mobility, foam rolling, sleep — muscles grow when you rest."},
+        ],
+    },
+}
+
+HOSPITALITY_CONFIG = {
+    "it": {
+        "title": "Bartender & Hospitality Blog — Stefano Ciancimino",
+        "desc": "10+ anni nel turismo, mixology, cocktail, AIBES e esperienze internazionali UK e Sudafrica.",
+        "label": "Bartender & Hospitality",
+        "h1": "Blog Hospitality & Mixology",
+        "sub": "Dal bancone al mondo: bartending, cocktail classici, cultura del servizio e storie internazionali.",
+        "hero_img": "hospitality-blog-hero.jpg",
+        "intro_img": "hospitality-cocktail.jpg",
+        "stats": '<div class="theme-stat"><strong>10+</strong><span>anni settore</span></div><div class="theme-stat"><strong>3</strong><span>continenti</span></div><div class="theme-stat"><strong>AIBES</strong><span>qualifica</span></div><div class="theme-stat"><strong>5★</strong><span>resort</span></div>',
+        "intro": """<p>Oltre <strong>10 anni</strong> nel turismo e ristorazione. Bartender professionale, mixology, sommelier e HACCP alberghiero.</p>
+<p>Esperienze in <strong>Inghilterra</strong> (Royal Shakespeare Company, corporate), <strong>Sudafrica</strong> (resort 5 stelle) e Italia.</p>
+<p>La disciplina del bancone ad alto volume forgia la stessa resilienza che uso oggi in operations e antifrode.</p>""",
+        "aibes_text": "Formazione professionale AIBES: tecniche di miscelazione, standard internazionali IBA e approccio professionale al servizio bar.",
+        "articles_label": "Blog",
+        "articles_h2": "Cocktail, Mixology & Stories",
+        "guides_label": "Cultura del bar",
+        "guides_h2": "Competenze chiave",
+        "mini_sections": [
+            {"icon": "🍸", "title": "Mixology", "text": "Stir, shake, build, muddle — ogni tecnica ha il suo cocktail."},
+            {"icon": "🌍", "title": "Internazionale", "text": "UK, Sudafrica, Italia — tre culture del servizio."},
+            {"icon": "⭐", "title": "VIP & Corporate", "text": "Eventi corporate, clientela VIP, precisione sotto pressione."},
+            {"icon": "📜", "title": "Ricette classiche", "text": "Manhattan, Negroni, Margarita — storia e tecnica."},
+            {"icon": "🥃", "title": "Cocktail USA", "text": "Old Fashioned, Whiskey Sour, Sazerac, Mint Julep."},
+        ],
+    },
+    "en": {
+        "title": "Bartender & Hospitality Blog — Stefano Ciancimino",
+        "desc": "10+ years in tourism, mixology, cocktails, AIBES and international UK & South Africa experience.",
+        "label": "Bartender & Hospitality",
+        "h1": "Hospitality & Mixology Blog",
+        "sub": "From the bar to the world: bartending, classic cocktails, service culture and international stories.",
+        "hero_img": "hospitality-blog-hero.jpg",
+        "intro_img": "hospitality-cocktail.jpg",
+        "stats": '<div class="theme-stat"><strong>10+</strong><span>years sector</span></div><div class="theme-stat"><strong>3</strong><span>continents</span></div><div class="theme-stat"><strong>AIBES</strong><span>qualified</span></div><div class="theme-stat"><strong>5★</strong><span>resorts</span></div>',
+        "intro": """<p>Over <strong>10 years</strong> in tourism and hospitality. Professional bartender, mixology, sommelier and hospitality HACCP.</p>
+<p>Experience in <strong>England</strong> (Royal Shakespeare Company, corporate), <strong>South Africa</strong> (5-star resorts) and Italy.</p>
+<p>High-volume bar discipline forges the same resilience I use today in operations and fraud prevention.</p>""",
+        "aibes_text": "Professional AIBES training: mixing techniques, IBA international standards and professional bar service approach.",
+        "articles_label": "Blog",
+        "articles_h2": "Cocktails, Mixology & Stories",
+        "guides_label": "Bar culture",
+        "guides_h2": "Key skills",
+        "mini_sections": [
+            {"icon": "🍸", "title": "Mixology", "text": "Stir, shake, build, muddle — every technique has its cocktail."},
+            {"icon": "🌍", "title": "International", "text": "UK, South Africa, Italy — three service cultures."},
+            {"icon": "⭐", "title": "VIP & Corporate", "text": "Corporate events, VIP clientele, precision under pressure."},
+            {"icon": "📜", "title": "Classic recipes", "text": "Manhattan, Negroni, Margarita — history and technique."},
+            {"icon": "🥃", "title": "US Cocktails", "text": "Old Fashioned, Whiskey Sour, Sazerac, Mint Julep."},
+        ],
+    },
+}
+
+
 def build_hospitality(lang):
-    if lang == "it":
-        c = """<p>Oltre <strong>10 anni</strong> nel turismo e ristorazione. Esperienze in Inghilterra (Royal Shakespeare Company, eventi corporate), Sudafrica e Italia.</p>
-<div class="stat-row"><div class="stat-box"><strong>10+</strong><span>anni settore</span></div><div class="stat-box"><strong>UK</strong><span>RSC · Corporate</span></div><div class="stat-box"><strong>AIBES</strong><span>Bartender pro</span></div></div>
-<ul><li>Bartender professionale e barista</li><li>Qualifica AIBES, corsi mixology e sommelier</li><li>HACCP Alberghiero Molinari Sciacca</li><li>Gestione picchi operativi e clientela VIP</li></ul>"""
-        build_section(lang, "hospitality", "Hospitality", "Hospitality & Estero", "Dal bancone al mondo: servizio, disciplina e standard internazionali.", c)
-    else:
-        c = """<p>Over <strong>10 years</strong> in tourism and hospitality. Experience in England (Royal Shakespeare Company, corporate events), South Africa and Italy.</p>
-<div class="stat-row"><div class="stat-box"><strong>10+</strong><span>years in sector</span></div><div class="stat-box"><strong>UK</strong><span>RSC · Corporate</span></div><div class="stat-box"><strong>AIBES</strong><span>Pro bartender</span></div></div>
-<ul><li>Professional bartender and barista</li><li>AIBES qualification, mixology and sommelier courses</li><li>HACCP hospitality certification Molinari Sciacca</li><li>Peak service management and VIP clientele</li></ul>"""
-        build_section(lang, "hospitality", "Hospitality", "Hospitality & Abroad", "From the bar to the world: service, discipline and international standards.", c)
+    build_theme_hub(lang, "hospitality", HOSPITALITY_ARTICLES, HOSPITALITY_CATEGORIES, HOSPITALITY_CONFIG)
+    for art in HOSPITALITY_ARTICLES:
+        build_theme_article(lang, "hospitality", art)
 
 
 def build_fitness(lang):
-    ui = UI[lang]
-    if lang == "it":
-        articles = [
-            ("blog/massa-muscolare.html", "Come aumentare la massa muscolare"),
-            ("blog/alimentazione-forma.html", "Alimentazione per mantenersi in forma"),
-            ("blog/zucchero-raffinato.html", "Perché evitare lo zucchero raffinato"),
-            ("blog/integrazione-proteica.html", "Integrazione proteica per la massa muscolare"),
-        ]
-        c = """<p>Oltre <strong>15 anni</strong> di bodybuilding, corsa su strada, bici da corsa e nutrizione sportiva. Approccio naturale, evidence-based e costanza.</p>
-<div class="stat-row"><div class="stat-box"><strong>15+</strong><span>anni fitness</span></div><div class="stat-box"><strong>5</strong><span>sport praticati</span></div><div class="stat-box"><strong>100%</strong><span>approccio naturale</span></div></div>
-<h2>Articoli</h2><ul>""" + "".join(f'<li><a href="{u}">{t}</a></li>' for u, t in articles) + "</ul>"
-        build_section(lang, "fitness", "Fitness", "Fitness & Health", "Allenamento, nutrizione e benessere a lungo termine.", c)
-    else:
-        articles = [
-            ("blog/massa-muscolare.html", "How to increase muscle mass"),
-            ("blog/alimentazione-forma.html", "Nutrition to stay in shape"),
-            ("blog/zucchero-raffinato.html", "Why avoid refined sugar"),
-            ("blog/integrazione-proteica.html", "Protein supplementation for muscle mass"),
-        ]
-        c = """<p>Over <strong>15 years</strong> of bodybuilding, road running, road cycling and sports nutrition. Natural, evidence-based and consistent approach.</p>
-<div class="stat-row"><div class="stat-box"><strong>15+</strong><span>years fitness</span></div><div class="stat-box"><strong>5</strong><span>sports practised</span></div><div class="stat-box"><strong>100%</strong><span>natural approach</span></div></div>
-<h2>Articles</h2><ul>""" + "".join(f'<li><a href="{u}">{t}</a></li>' for u, t in articles) + "</ul>"
-        build_section(lang, "fitness", "Fitness", "Fitness & Health", "Training, nutrition and long-term wellbeing.", c)
+    build_theme_hub(lang, "fitness", FITNESS_ARTICLES, FITNESS_CATEGORIES, FITNESS_CONFIG)
+    for art in FITNESS_ARTICLES:
+        build_theme_article(lang, "fitness", art)
 
 
 def build_portfolio(lang):
@@ -770,6 +998,10 @@ def build_sitemap():
     ]
     for art in ARTICLES:
         pages.append(f"blog/{art['slug']}.html")
+    for art in FITNESS_ARTICLES:
+        pages.append(f"fitness/{art['slug']}.html")
+    for art in HOSPITALITY_ARTICLES:
+        pages.append(f"hospitality/{art['slug']}.html")
     lines = ['<?xml version="1.0" encoding="UTF-8"?>',
              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
     for p in pages:
