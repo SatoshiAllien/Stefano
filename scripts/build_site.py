@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parent.parent
 BASE = "https://satoshiallien.github.io/Stefano"
 TODAY = date.today().isoformat()
 ASSET = "../"
-CSS_VER = "20260622-brand"
+CSS_VER = "20260622-hero-logo"
 LOGO_FILE = "logo-sc-hd.png"
 LOGO_VER = "20260622-brand"
 
@@ -458,8 +458,8 @@ def build_index(lang):
         <div class="stat-row">{stat_html}</div>
       </div>
       <div class="hero__image reveal reveal-delay-2">
-        <div class="hero__image-frame">
-          <img src="{ASSET}img/profile.jpg" alt="Stefano Davide Ciancimino" class="profile-photo" width="480" height="480">
+        <div class="hero__image-frame hero__image-frame--round">
+          <img src="{ASSET}img/{LOGO_FILE}?v={LOGO_VER}" alt="Stefano Ciancimino — cyberpunk logo" class="hero__logo" width="320" height="320">
         </div>
       </div>
     </div>
