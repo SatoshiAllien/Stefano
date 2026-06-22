@@ -1528,6 +1528,34 @@ p:last-child { margin-bottom: 0; }
   font-family: var(--font-primary);
 }
 
+.chatbot__launcher {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-direction: row-reverse;
+}
+
+.chatbot__launcher-label {
+  padding: 0.5rem 0.9rem;
+  background: var(--color-night);
+  color: var(--color-white);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  box-shadow: var(--shadow-md), var(--shadow-glow-blue);
+  white-space: nowrap;
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity var(--transition), transform var(--transition);
+}
+
+.chatbot--open .chatbot__launcher-label {
+  opacity: 0;
+  transform: translateX(8px);
+  pointer-events: none;
+}
+
 .chatbot__toggle {
   width: 56px;
   height: 56px;
@@ -1826,4 +1854,5 @@ p:last-child { margin-bottom: 0; }
   .hero__actions .btn { width: 100%; }
   .footer__grid { grid-template-columns: 1fr; }
   .chatbot__panel { width: calc(100vw - 32px); right: -8px; }
+  .chatbot__launcher-label { font-size: 0.75rem; padding: 0.4rem 0.7rem; }
 }

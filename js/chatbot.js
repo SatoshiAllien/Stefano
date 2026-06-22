@@ -1,5 +1,5 @@
 /**
- * Stefano Ciancimino — AI Assistant
+ * Stefano Ciancimino — Parla con Stefano
  * Knowledge base: antifrode, blockchain, AI, sicurezza
  */
 
@@ -79,7 +79,7 @@
     },
     {
       keywords: ['ciao', 'salve', 'buongiorno', 'buonasera', 'hey', 'hello', 'hi'],
-      response: 'Ciao! Sono l\'assistente AI di Stefano Ciancimino. Posso aiutarti su antifrode, blockchain, AI, sicurezza e consulenze. Come posso assisterti?'
+      response: 'Ciao! Benvenuto in Parla con Stefano. Posso aiutarti su antifrode, blockchain, AI, sicurezza e consulenze. Come posso assisterti?'
     },
     {
       keywords: ['grazie', 'thanks', 'perfetto', 'ok'],
@@ -132,13 +132,15 @@
     const chatbot = document.createElement('div');
     chatbot.className = 'chatbot';
     chatbot.innerHTML =
-      '<button class="chatbot__toggle" aria-label="Apri assistente AI">' +
-      '<img src="' + LOGO + '" alt="" class="chatbot__toggle-logo" width="44" height="44" loading="eager" decoding="async">' +
-      '</button>' +
+      '<div class="chatbot__launcher">' +
+      '<span class="chatbot__launcher-label">Parla con Stefano</span>' +
+      '<button class="chatbot__toggle" aria-label="Parla con Stefano" title="Parla con Stefano">' +
+      '<img src="' + LOGO + '" alt="Parla con Stefano" class="chatbot__toggle-logo" width="44" height="44" loading="eager" decoding="async">' +
+      '</button></div>' +
       '<div class="chatbot__panel">' +
       '<div class="chatbot__header">' +
-      '<div class="chatbot__avatar"><img src="' + LOGO + '" alt="" class="chatbot__avatar-logo" width="36" height="36" loading="eager" decoding="async"></div>' +
-      '<div class="chatbot__header-info"><strong>Stefano AI</strong><span>Antifrode · Blockchain · AI</span></div>' +
+      '<div class="chatbot__avatar"><img src="' + LOGO + '" alt="Parla con Stefano" class="chatbot__avatar-logo" width="36" height="36" loading="eager" decoding="async"></div>' +
+      '<div class="chatbot__header-info"><strong>Parla con Stefano</strong><span>Antifrode · Blockchain · AI</span></div>' +
       '<button class="chatbot__close" aria-label="Chiudi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>' +
       '</div>' +
       '<div class="chatbot__messages"></div>' +
@@ -210,7 +212,7 @@
       chatbot.classList.toggle('chatbot--open');
       if (chatbot.classList.contains('chatbot--open') && messages.children.length === 0) {
         addMessage(
-          'Ciao! Sono l\'assistente di Stefano Ciancimino. Chiedimi di antifrode, blockchain, AI, sicurezza o consulenze.',
+          'Ciao! Sono Parla con Stefano — l\'assistente di Stefano Ciancimino. Chiedimi di antifrode, blockchain, AI, sicurezza o consulenze.',
           'bot'
         );
       }
