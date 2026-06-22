@@ -11,9 +11,10 @@ ROOT = Path(__file__).resolve().parent.parent
 BASE = "https://satoshiallien.github.io/Stefano"
 TODAY = date.today().isoformat()
 ASSET = "../"
-CSS_VER = "20260622-tech-pc"
+CSS_VER = "20260622-crypto-home"
 LOGO_FILE = "logo-sc-hd.png"
 LOGO_VER = "20260622-brand"
+CRYPTO_SITE = "https://satoshiallien.github.io/cryptoitaliafacile/index.html"
 
 
 def asset_prefix(depth=1):
@@ -401,6 +402,68 @@ def write(path, content):
     path.write_text(content, encoding="utf-8")
 
 
+def _home_crypto_banner(lang):
+    if lang == "it":
+        badge = "⭐ Progetto in evidenza · Dal 2015"
+        h2 = "Crypto Italia Facile — The Little Satoshi News"
+        lead = (
+            "Il mio portale educativo su <strong>Bitcoin, blockchain e Web3</strong> — notizie, guide e analisi "
+            "in linguaggio accessibile, senza hype. Fondato nel 2015 per rendere le crypto comprensibili a tutti."
+        )
+        cta = "Visita Crypto Italia Facile →"
+        links = [
+            (f"{CRYPTO_SITE.replace('index.html', 'sicurezza/index.html')}", "🔒 Sicurezza crypto"),
+            (f"{CRYPTO_SITE.replace('index.html', 'cardano/index.html')}", "◆ Cardano"),
+            (f"{CRYPTO_SITE.replace('index.html', 'guide/index.html')}", "📚 Guide"),
+            (f"{CRYPTO_SITE.replace('index.html', 'news/index.html')}", "📰 News Bitcoin"),
+        ]
+        visual_h3 = "The Little Satoshi News"
+        visual_p = "Bitcoin · DeFi · Web3 — spiegati in modo semplice"
+        stats = '<div class="stat-row" style="margin-top:1.25rem"><div class="stat-box"><strong>2015</strong><span>dal lancio</span></div><div class="stat-box"><strong>₿</strong><span>Bitcoin first</span></div><div class="stat-box"><strong>AI</strong><span>assistente Satoshi</span></div></div>'
+    else:
+        badge = "⭐ Featured project · Since 2015"
+        h2 = "Crypto Italia Facile — The Little Satoshi News"
+        lead = (
+            "My educational portal on <strong>Bitcoin, blockchain and Web3</strong> — news, guides and analysis "
+            "in accessible language, without hype. Founded in 2015 to make crypto understandable for everyone."
+        )
+        cta = "Visit Crypto Italia Facile →"
+        links = [
+            (f"{CRYPTO_SITE.replace('index.html', 'sicurezza/index.html')}", "🔒 Crypto security"),
+            (f"{CRYPTO_SITE.replace('index.html', 'cardano/index.html')}", "◆ Cardano"),
+            (f"{CRYPTO_SITE.replace('index.html', 'guide/index.html')}", "📚 Guides"),
+            (f"{CRYPTO_SITE.replace('index.html', 'news/index.html')}", "📰 Bitcoin news"),
+        ]
+        visual_h3 = "The Little Satoshi News"
+        visual_p = "Bitcoin · DeFi · Web3 — explained simply"
+        stats = '<div class="stat-row" style="margin-top:1.25rem"><div class="stat-box"><strong>2015</strong><span>since launch</span></div><div class="stat-box"><strong>₿</strong><span>Bitcoin first</span></div><div class="stat-box"><strong>AI</strong><span>Satoshi assistant</span></div></div>'
+    link_items = "".join(
+        f'<a href="{url}" class="crypto-link" target="_blank" rel="noopener">{label}</a>'
+        for url, label in links
+    )
+    return f"""<section class="section" id="crypto-italia">
+    <div class="container">
+      <div class="crypto-banner reveal">
+        <div>
+          <span class="crypto-banner__badge">{badge}</span>
+          <h2>{h2}</h2>
+          <p>{lead}</p>
+          {stats}
+          <div class="crypto-links">
+            <a href="{CRYPTO_SITE}" class="crypto-link crypto-link--main" target="_blank" rel="noopener">{cta}</a>
+            {link_items}
+          </div>
+        </div>
+        <div class="crypto-banner__visual">
+          <div class="crypto-banner__visual-icon" aria-hidden="true">₿</div>
+          <h3>{visual_h3}</h3>
+          <p>{visual_p}</p>
+        </div>
+      </div>
+    </div>
+  </section>"""
+
+
 def build_index(lang):
     ui = UI[lang]
     if lang == "it":
@@ -410,6 +473,7 @@ def build_index(lang):
         sections_label = "Aree di competenza"
         sections_h2 = "CV · Portfolio · Blog tematico"
         passions = [
+            (CRYPTO_SITE, "Crypto Italia Facile", "Portale educativo Bitcoin, blockchain e Web3 dal 2015 — The Little Satoshi News."),
             ("about.html", "CV / Chi Sono", "8+ anni PayPal, competenze internazionali, AI e blockchain."),
             ("ai-blockchain.html", "AI & Blockchain", "Ricerca dal 2017, DeFi/CeFi, Ollama e prompt engineering."),
             ("tech.html", "Tech Lab", "PC Building, OS, Web Design, AI Automation."),
@@ -424,6 +488,7 @@ def build_index(lang):
         sections_label = "Areas of expertise"
         sections_h2 = "CV · Portfolio · Thematic blog"
         passions = [
+            (CRYPTO_SITE, "Crypto Italia Facile", "Bitcoin, blockchain and Web3 educational portal since 2015 — The Little Satoshi News."),
             ("about.html", "CV / About Me", "8+ years at PayPal, international skills, AI and blockchain."),
             ("ai-blockchain.html", "AI & Blockchain", "Research since 2017, DeFi/CeFi, Ollama and prompt engineering."),
             ("tech.html", "Tech Lab", "PC Building, OS, Web Design, AI Automation."),
@@ -431,10 +496,15 @@ def build_index(lang):
             ("fitness.html", "Fitness & Health", "15+ years bodybuilding, nutrition and dedicated articles."),
             ("blog.html", "Blog", "6 categories: fraud, crypto, AI, fitness, hospitality, tech."),
         ]
-    cards = "".join(
-        f'<article class="passion-card reveal"><div class="passion-card__icon">→</div><h3>{t}</h3><p>{d}</p><a href="{u}" class="passion-card__link">{ui["read_more"]} →</a></article>'
-        for u, t, d in passions
-    )
+    cards = ""
+    for u, t, d in passions:
+        ext = ' target="_blank" rel="noopener"' if u.startswith("http") else ""
+        feat = " passion-card--featured" if u.startswith("http") else ""
+        icon = "₿" if "crypto" in u else "→"
+        cards += (
+            f'<article class="passion-card reveal{feat}"><div class="passion-card__icon">{icon}</div>'
+            f"<h3>{t}</h3><p>{d}</p><a href=\"{u}\" class=\"passion-card__link\"{ext}>{ui['read_more']} →</a></article>"
+        )
     stat_html = "".join(f'<div class="stat-box"><strong>{v}</strong><span>{l}</span></div>' for v, l in stats)
     title = f"Stefano Ciancimino — Fraud Analyst · Blockchain · AI"
     desc = sub[:155]
@@ -453,6 +523,7 @@ def build_index(lang):
             {ui['download_cv']}
           </a>
           <a href="contact.html" class="btn btn--outline">{ui['cta']}</a>
+          <a href="{CRYPTO_SITE}" class="btn btn--ghost" target="_blank" rel="noopener">Crypto Italia Facile →</a>
           <a href="https://www.linkedin.com/in/55555555-b5947439" target="_blank" rel="noopener" class="btn btn--linkedin">LinkedIn</a>
         </div>
         <div class="stat-row">{stat_html}</div>
@@ -464,6 +535,7 @@ def build_index(lang):
       </div>
     </div>
   </section>
+  {_home_crypto_banner(lang)}
   <section class="section section--pearl">
     <div class="container">
       <div class="section-header reveal">

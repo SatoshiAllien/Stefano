@@ -1998,6 +1998,21 @@ p:last-child { margin-bottom: 0; }
   border-color: var(--color-turquoise);
 }
 
+.passion-card--featured {
+  border-color: rgba(59, 130, 246, 0.35);
+  background: linear-gradient(145deg, var(--bg-card) 0%, rgba(59, 130, 246, 0.06) 100%);
+}
+
+.passion-card--featured .passion-card__icon {
+  background: var(--gradient-neon);
+  color: var(--color-white);
+}
+
+.passion-card--featured:hover {
+  border-color: var(--color-neon-blue-light);
+  box-shadow: var(--shadow-glow);
+}
+
 .passion-card__icon {
   width: 48px;
   height: 48px;
