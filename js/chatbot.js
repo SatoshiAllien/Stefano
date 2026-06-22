@@ -7,6 +7,8 @@
   'use strict';
 
   const LINKEDIN = 'https://www.linkedin.com/in/55555555-b5947439';
+  const X_ACCOUNT = 'https://x.com/RapidResponse47';
+  const CRYPTO_SITE = 'https://satoshiallien.github.io/cryptoitaliafacile/index.html';
   const EMAIL = 'krown82@outlook.com';
 
   const knowledgeBase = [
@@ -43,8 +45,16 @@
       response: 'Stefano offre consulenza su: analisi antifrode e risk management, ricerca blockchain, integrazione AI nei processi operativi, formazione team e audit processi. Visita la pagina Consulenza o contattalo a ' + EMAIL + ' per una sessione introduttiva.'
     },
     {
-      keywords: ['contatti', 'contattare', 'email', 'telefono', 'linkedin', 'scrivere'],
-      response: 'Puoi contattare Stefano:\n• Email: ' + EMAIL + '\n• Telefono: +39 377 350 3049\n• LinkedIn: ' + LINKEDIN + '\n\nRisponde entro 24 ore lavorative.'
+      keywords: ['contatti', 'contattare', 'email', 'telefono', 'linkedin', 'scrivere', 'twitter', 'x.com'],
+      response: 'Puoi contattare Stefano:\n• Email: ' + EMAIL + '\n• Telefono: +39 377 350 3049\n• LinkedIn: ' + LINKEDIN + '\n• X: ' + X_ACCOUNT + '\n\nRisponde entro 24 ore lavorative.'
+    },
+    {
+      keywords: ['cryptoitalia', 'crypto italia', 'crypto facile', 'satoshi', 'little satoshi', 'blogger', 'blog crypto', 'divulgatore'],
+      response: 'Stefano è il creatore di Crypto Italia Facile (The Little Satoshi News) — portale educativo dove spiega Bitcoin, blockchain e Web3 in modo semplice dal 2015. Visita: ' + CRYPTO_SITE + '\n\nTrovi guide, news, sicurezza crypto, Cardano e l\'assistente AI Satoshi.'
+    },
+    {
+      keywords: ['rapidresponse', 'rapid response', 'x account', 'profilo x'],
+      response: 'Segui Stefano su X: ' + X_ACCOUNT + ' — aggiornamenti su crypto, analisi e contenuti da Crypto Italia Facile.'
     },
     {
       keywords: ['lingue', 'inglese', 'italiano', 'language'],
