@@ -311,6 +311,21 @@ p:last-child { margin-bottom: 0; }
   align-items: center;
   justify-content: center;
   color: var(--color-white);
+  flex-shrink: 0;
+}
+
+.logo__icon--brand {
+  background: transparent;
+  border-radius: var(--radius-sm);
+  overflow: visible;
+}
+
+.logo__img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.5)) drop-shadow(0 0 6px rgba(225, 29, 72, 0.25));
 }
 
 .logo__text {
