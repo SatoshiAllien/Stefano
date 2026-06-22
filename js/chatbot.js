@@ -6,7 +6,17 @@
 (function () {
   'use strict';
 
-  const LOGO = 'img/logo-sc-hd.png';
+  function assetBase() {
+    var parts = window.location.pathname.split('/').filter(Boolean);
+    var langIdx = -1;
+    for (var i = 0; i < parts.length; i++) {
+      if (parts[i] === 'it' || parts[i] === 'en') { langIdx = i; break; }
+    }
+    var depth = langIdx >= 0 ? Math.max(0, parts.length - langIdx - 2) : 0;
+    return (depth > 0 ? '../'.repeat(depth + 1) : '../') + 'img/';
+  }
+
+  const LOGO = assetBase() + 'logo-sc-hd.png?v=20260622-brand';
   const LINKEDIN = 'https://www.linkedin.com/in/55555555-b5947439';
   const X_ACCOUNT = 'https://x.com/TheRiser100x';
   const CRYPTO_SITE = 'https://satoshiallien.github.io/cryptoitaliafacile/index.html';

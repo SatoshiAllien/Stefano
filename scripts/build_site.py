@@ -11,7 +11,9 @@ ROOT = Path(__file__).resolve().parent.parent
 BASE = "https://satoshiallien.github.io/Stefano"
 TODAY = date.today().isoformat()
 ASSET = "../"
-CSS_VER = "20260622-theme"
+CSS_VER = "20260622-brand"
+LOGO_FILE = "logo-sc-hd.png"
+LOGO_VER = "20260622-brand"
 
 
 def asset_prefix(depth=1):
@@ -283,7 +285,7 @@ def head(lang, page_file, title, description, alt_lang_file=None, depth=1, og_im
     hreflang_alt = "en-GB" if lang == "it" else "it-IT"
     html_lang = "it" if lang == "it" else "en-GB"
     ap = asset_prefix(depth)
-    og = og_image or f"{BASE}/img/logo-sc-hd.png"
+    og = og_image or f"{BASE}/img/{LOGO_FILE}"
     return f"""<!DOCTYPE html>
 <html lang="{html_lang}">
 <head>
@@ -300,8 +302,8 @@ def head(lang, page_file, title, description, alt_lang_file=None, depth=1, og_im
   <link rel="alternate" hreflang="{hreflang_self}" href="{canonical}">
   <link rel="alternate" hreflang="{hreflang_alt}" href="{alt_href}">
   <link rel="alternate" hreflang="x-default" href="{BASE}/it/{page_file}">
-  <link rel="icon" href="{ap}img/favicon.png" type="image/png">
-  <link rel="apple-touch-icon" href="{ap}img/favicon.png">
+  <link rel="icon" href="{ap}img/favicon.png?v={LOGO_VER}" type="image/png">
+  <link rel="apple-touch-icon" href="{ap}img/apple-touch-icon.png?v={LOGO_VER}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lato:wght@400;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
@@ -325,7 +327,7 @@ def header(lang, current, depth=1, nav_active=None):
     <div class="container header__inner">
       <a href="{np}index.html" class="logo">
         <div class="logo__icon logo__icon--brand">
-          <img src="{ap}img/logo-sc-hd.png" alt="Stefano Ciancimino logo" class="logo__img" width="40" height="40" loading="eager" decoding="async">
+          <img src="{ap}img/{LOGO_FILE}?v={LOGO_VER}" alt="Stefano Ciancimino — logo cyberpunk" class="logo__img" width="40" height="40" loading="eager" decoding="async">
         </div>
         <div>
           <div class="logo__text">Stefano Ciancimino</div>
@@ -361,7 +363,7 @@ def footer(lang, depth=1):
         <div class="footer__brand">
           <a href="{ap}index.html" class="logo">
             <div class="logo__icon logo__icon--brand">
-              <img src="{ap}img/logo-transparent.png" alt="" class="logo__img" width="36" height="36" loading="lazy">
+              <img src="{ap}img/{LOGO_FILE}?v={LOGO_VER}" alt="Stefano Ciancimino logo" class="logo__img" width="36" height="36" loading="lazy">
             </div>
             <div><div class="logo__text">Stefano Ciancimino</div><div class="logo__sub">{ui['footer_tagline']}</div></div>
           </a>
@@ -1026,7 +1028,7 @@ def build_sitemap():
 def build_favicon():
     try:
         from PIL import Image
-        src = ROOT / "img" / "logo-sc-mark.png"
+        src = ROOT / "img" / LOGO_FILE
         if src.exists():
             img = Image.open(src).convert("RGBA")
             img.resize((32, 32), Image.Resampling.LANCZOS).save(ROOT / "img" / "favicon.png")
